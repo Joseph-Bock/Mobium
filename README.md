@@ -12,6 +12,6 @@ Mobium apunta a la venta de celulares para todo tipo de personas, siempre cumpli
 
 - **Joseph Herberth:** Tengo 20 años, varios años de experiencia programando en Lua, actualmente estudiando lo que seria Programacion Web Full-Stack.
     
-- **Henrique Morata:**
+- **Henrique Morata:** Soy brasileño de São Paulo, tengo 26 años y trabajo con automatizacion industrial, hacendo softwares para controle de máquinas y robots.
    
 - **Dante Caputo:**
