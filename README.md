@@ -10,8 +10,8 @@ Mobium apunta a la venta de celulares para todo tipo de personas, siempre cumpli
 
 ### Integrantes
 
-   **Joseph Herberth:** Tengo 20 años, varios años de experiencia programando en Lua, actualmente estudiando lo que seria Programacion Web Full-Stack.
+- **Joseph Herberth:** Tengo 20 años, varios años de experiencia programando en Lua, actualmente estudiando lo que seria Programacion Web Full-Stack.
     
-   **Henrique Morata:**
+- **Henrique Morata:**
    
-   **Dante Caputo:**
+- **Dante Caputo:**
