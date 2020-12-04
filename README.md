@@ -15,3 +15,8 @@ Mobium apunta a la venta de celulares para todo tipo de personas, siempre cumpli
 - **Henrique Morata:** Soy brasileño de São Paulo, tengo 26 años y trabajo con automatizacion industrial, hacendo softwares para controle de máquinas y robots.
    
 - **Dante Caputo:**
+
+### Paginas de Referencia
+- ** amazon.com
+- ** adidas.com
+- ** apple.com
