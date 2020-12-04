@@ -17,6 +17,6 @@ Mobium apunta a la venta de celulares para todo tipo de personas, siempre cumpli
 - **Dante Caputo:**
 
 ### Paginas de Referencia
-- [amazon] (https://www.amazon.com/)
-- [adidas] (https://www.adidas.com.ar/)
-- [apple] (https://www.apple.com/)
+- [Amazon](https://www.amazon.com/)
+- [Adidas](https://www.adidas.com.ar/)
+- [Apple](https://www.apple.com/)
