@@ -20,3 +20,5 @@ Mobium apunta a la venta de celulares para todo tipo de personas, siempre cumpli
 - [Amazon](https://www.amazon.com/)
 - [Adidas](https://www.adidas.com.ar/)
 - [Apple](https://www.apple.com/)
+- [Samsung](https://www.samsung.com/)
+- [Xiaomi](https://www.mi.com/)
