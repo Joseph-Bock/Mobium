@@ -33,13 +33,15 @@
 
         <div id = 'banner'></div>
 
-        <input type = "search" id = 'search-bar' placeholder = "search">
+        <form id = "search-bar">
+            <input type = "text" placeholder = "search" name = "search">
+            <button id = 'search-button' type = "submit"><img src = 'img/Search-icon.svg'></button>
+        </form>
 
         <h1>Featured Phones</h1>
 
         <div>
             <ul class = 'dark-shadow'>
-
                 <li class = 'featured'>iPhone 12 Pro
                     <ul>
                         <li class = 'subtitle'>by Apple</li>
@@ -55,7 +57,6 @@
                         <li class = 'subtitle'>by Apple</li>
                     </ul>
                 </li>
-
             </ul>
         </div>
 
@@ -63,7 +64,6 @@
 
         <div>
             <ul class = 'dark-shadow'>
-
                 <li class = 'featured'>iPhone 12 Pro
                     <ul>
                         <li class = 'subtitle'>by Apple</li>
@@ -79,7 +79,6 @@
                         <li class = 'subtitle'>by Apple</li>
                     </ul>
                 </li>
-
             </ul>
         </div>
 
@@ -87,7 +86,7 @@
             <div id = 'newsletter'>
                 <ul>
                     <li>Subscribe to our Newsletter!</li>
-                    <li>To find out more about new products and possible discounts!</li>
+                    <li>find out more about new products and possible discounts!</li>
                     <li>
                         <input type = 'email' id = 'mailbox' placeholder = 'Email'>
                     </li>

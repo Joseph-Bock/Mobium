@@ -8,6 +8,8 @@
     color: #892FD8;
     padding: 0;
     margin: 0;
+    border: none;
+    outline: none;
 }
 
 h1 {
@@ -66,8 +68,9 @@ nav ul {
 
 .nav-link {
     margin: 0 2.604vw;
-    transition: filter 300ms ease-in-out,
-                transform 300ms ease-in-out;
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+    transition: filter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .nav-link:hover {
@@ -110,8 +113,10 @@ nav ul {
 
 /* Search bar properties*/
 
-#search-bar {
+form#search-bar {
     z-index: 9;
+    display: flex;
+    justify-content: space-between;
     height: 70px;
     width: 600px;
     position: absolute;
@@ -122,13 +127,28 @@ nav ul {
     border-width: 2px;
     border-radius: 5px;
     backdrop-filter: blur(30px) brightness(90%);
-    background-color: rgba(0, 0, 0, 0);
+}
+
+form#search-bar input[type = text] {
+    background-color: transparent;
     font-size: 25px;
     color: white;
-    padding-left: 15px;
+    padding-left: 20px;
     outline: none;
 }
 
+#search-button {
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    margin-right: 20px;
+    align-self: center;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#search-button:hover {
+    transform: scale(1.15)
+}
 
 /* Featured Properties */
 
@@ -147,7 +167,6 @@ nav ul {
 
 
 /* Footer & Newsletter Properties */
-
 
 footer {
     background-color: #E1E1E1;
@@ -170,14 +189,13 @@ footer {
 }
 
 #newsletter li {
+    font-size: 1.1vw;
     color: white;
-    font-family: 'Poppins';
-    white-space: nowrap;
     grid-column: 2;
 }
 
 #newsletter li:nth-child(1) {
-    font-size: 35px;
+    font-size: 1.9vw;
     grid-column: 1;
 }
 
