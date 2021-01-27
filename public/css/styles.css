@@ -110,6 +110,23 @@ nav ul {
     background-image: url('/img/Phones.png');
 }
 
+#arrow {
+    position: absolute;
+    width: 65px;
+    bottom: 25px;
+    left: calc(50vw - 32.5px);
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.45));
+    animation: bounce 10s infinite linear;
+}
+
+@keyframes bounce {
+    5% {transform: translateY(-15px);}
+    10% {transform: translateY(0);}
+    15% {transform: translateY(-10px);}
+    20% {transform: translateY(5px);}
+    25% {transform: translateY(0);}
+}
+
 
 /* Search bar properties*/
 
@@ -150,6 +167,19 @@ form#search-bar input[type = text] {
     transform: scale(1.15)
 }
 
+
+/* Register Form */
+
+#register {
+    height: 800px;
+    width: 100%;
+    margin-top: 190px;
+}
+
+#register div {
+    height: 100%;
+}
+
 /* Featured Properties */
 
 .featured {
@@ -172,7 +202,7 @@ footer {
     background-color: #E1E1E1;
     height: 500px;
     position: relative;
-    top: 80px;
+    margin-top: 90px;
 }
 
 #newsletter {
@@ -189,13 +219,13 @@ footer {
 }
 
 #newsletter li {
-    font-size: 1.1vw;
+    font-size: 1vw;
     color: white;
     grid-column: 2;
 }
 
 #newsletter li:nth-child(1) {
-    font-size: 1.9vw;
+    font-size: 1.5vw;
     grid-column: 1;
 }
 

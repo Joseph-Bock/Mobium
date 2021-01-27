@@ -1,11 +1,23 @@
+// Express Setup
+
 const express = require('express');
-const path = require('path');
 const app = express();
+
+// Modules
+
+const path = require('path');
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, './views'));
 
 app.use(express.static(path.join(__dirname, './public')));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/views/index.html'));
+    res.render('index');
+})
+
+app.get('/register', (req, res) => {
+    res.render('register');
 })
 
 app.listen(process.env.PORT || 3000, () => {

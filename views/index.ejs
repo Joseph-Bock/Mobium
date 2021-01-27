@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+
+    <%- include('./partials/head.ejs') %> <!-- Includes HTML Configurations -->
+
+    <body>
+        
+        <%- include('./partials/nav.ejs') %> <!-- Includes navigation -->
+
+        <div id = 'banner'></div>
+        <img id = 'arrow' src = '/img/Down-arrow.svg'>
+
+        <form id = "search-bar">
+            <input type = "text" placeholder = "search" name = "search">
+            <button id = 'search-button' type = "submit"><img src = 'img/Search-icon.svg'></button>
+        </form>
+
+        <h1>Featured Phones</h1>
+
+        <div>
+            <ul class = 'dark-shadow'>
+                <li class = 'featured'>iPhone 12 Pro
+                    <ul>
+                        <li class = 'subtitle'>by Apple</li>
+                    </ul>
+                </li>
+                <li class = 'featured'>iPhone 12 Pro
+                    <ul>
+                        <li class = 'subtitle'>by Apple</li>
+                    </ul>
+                </li>
+                <li class = 'featured'>iPhone 12 Pro
+                    <ul>
+                        <li class = 'subtitle'>by Apple</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <h1>Best Selling Phones</h1>
+
+        <div>
+            <ul class = 'dark-shadow'>
+                <li class = 'featured'>iPhone 12 Pro
+                    <ul>
+                        <li class = 'subtitle'>by Apple</li>
+                    </ul>
+                </li>
+                <li class = 'featured'>iPhone 12 Pro
+                    <ul>
+                        <li class = 'subtitle'>by Apple</li>
+                    </ul>
+                </li>
+                <li class = 'featured'>iPhone 12 Pro
+                    <ul>
+                        <li class = 'subtitle'>by Apple</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <%- include('./partials/footer.ejs') %> <!-- Includes footer -->
+
+    </body>
+</html>

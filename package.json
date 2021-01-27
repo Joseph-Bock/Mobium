@@ -9,6 +9,7 @@
   "author": "Joseph Herberth, Henrique Morata & Dante Caputo",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.5",
     "express": "^4.17.1"
   }
 }
