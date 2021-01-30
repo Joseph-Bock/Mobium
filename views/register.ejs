@@ -12,9 +12,34 @@
 
             <h1>Register</h1>
 
-            <form>
-            </form>
+            <form id = 'register-form'>
 
+                <input type = 'text' id = 'firstname' name = 'firstname'>
+                <input type = 'text' id = 'lastname' name = 'lastname'>
+                <input type = 'date' id = 'birthday' name = 'birthday'>
+
+                <div id = 'genders'>
+
+                    <label for = 'female'>Female</label>
+                    <input type = 'radio' id = 'female' name = 'gender' value = 'female'>
+
+                    <label for = 'male'>Male</label>
+                    <input type = 'radio' id = 'male' name = 'gender' value = 'male'>
+
+                </div>
+
+                <input type = 'email' id = 'email' name = 'email'>
+                <input type = 'password' id = 'password' name = 'password'>
+                <input type = 'password' id = 'confirmation' name = 'confirmation'>
+
+                <label for = 'firstname'>First Name</label>
+                <label for = 'lastname'>Last Name</label>
+                <label for = 'birthday'>Date of Birth</label>
+                <label id = 'email' for = 'email'>E-Mail</label>
+                <label for = 'password'>Password</label>
+                <label for = 'confirmation'>Repeat Password</label>
+
+            </form>
         </div>
 
         <%- include('./partials/footer.ejs') %> <!-- Includes footer -->

@@ -1,9 +1,9 @@
  /* Global Properties*/
  
-* {
+ * {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    font-size: 20px;
+    font-size: 1.04vw;
     font-weight: 600;
     color: #892FD8;
     padding: 0;
@@ -13,7 +13,7 @@
 }
 
 h1 {
-    font-size: 35px;
+    font-size: 1.82vw;
     color: #892fd8;
     text-align: center;
     padding: 30px 0;
@@ -44,7 +44,7 @@ a {
 }
 
 .subtitle {
-    margin-top: -10px;
+    margin-top: -5px;
     color:#282828
 }
 
@@ -79,13 +79,13 @@ nav ul {
 }
 
 #logo {
-    font-size: 50px;
+    font-size: 2.6vw;
     padding: 0 5.208vw
 }
 
 #dot {
     font-weight: 900;
-    font-size: 50px;
+    font-size: 2.6vw;
 }
 
 #cart-login {
@@ -93,7 +93,7 @@ nav ul {
 }
 
 #cart-login img {
-    width: 25px;
+    height: 1.82vw;
     vertical-align: middle;
 }
 
@@ -112,11 +112,11 @@ nav ul {
 
 #arrow {
     position: absolute;
-    width: 65px;
-    bottom: 25px;
-    left: calc(50vw - 32.5px);
+    width: 3.38vw;
+    bottom: 1.3vw;
     filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.45));
     animation: bounce 10s infinite linear;
+    left: calc(50vw - 1.69vw)
 }
 
 @keyframes bounce {
@@ -144,6 +144,7 @@ form#search-bar {
     border-width: 2px;
     border-radius: 5px;
     backdrop-filter: blur(30px) brightness(90%);
+    -webkit-backdrop-filter: blur(30px) brightness(90%);
 }
 
 form#search-bar input[type = text] {
@@ -176,23 +177,80 @@ form#search-bar input[type = text] {
     margin-top: 190px;
 }
 
-#register div {
-    height: 100%;
+#register-form {
+    display: grid;
+    grid-template-columns: 1fr 400px 1fr;
+    column-gap: 30px;
+    grid-auto-flow: column;
 }
+
+#register-form input {
+    grid-column: 2;
+    height: 40px;
+    margin: 15px 0;
+    border-bottom: solid;
+    border-width: 2px;
+    border-color: #282828;
+    text-align: center;
+}
+
+#register-form label {
+    justify-self: right;
+    align-self: center;
+}
+
+#genders {
+    display: flex;
+    justify-content: center;
+    grid-column: 2;
+}
+
+#genders input {
+    appearance: none;
+    height: 30px;
+    width: 30px;
+    margin: 15px 50px 15px 15px;
+    border: solid;
+    border-color: #892FD8;
+    border-width: 2px;
+}
+
+input#male {
+    margin-right: 0px;
+}
+
+#genders input:checked {
+    appearance: none;
+    background-color: #892FD8;
+    outline: solid;
+    outline-width: 3px;
+    outline-offset: -5px;
+    outline-color: white;
+}
+
+#email {
+    grid-row: 5;
+}
+
+#genders label {
+    align-self: center;
+}
+
 
 /* Featured Properties */
 
 .featured {
     width: 33%;
-    height: 400px;
+    height: 20.83vw;
     color: #282828;
-    font-size: 40px;
+    font-size: 2.08vw;
     text-align: center;
-    padding-top: 40px;
+    padding-top: 2.08vw;
     background-image: url(/img/iPhone12.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-position-y: -350%;
+    background-size: contain;
+    background-position-y: 8.5vw;
 }
 
 
@@ -200,7 +258,6 @@ form#search-bar input[type = text] {
 
 footer {
     background-color: #E1E1E1;
-    height: 500px;
     position: relative;
     margin-top: 90px;
 }
@@ -208,7 +265,7 @@ footer {
 #newsletter {
     background-color: #892fd8;
     justify-items: center;
-    height: 150px;
+    height: 7.8125vw;
 }
 
 #newsletter ul {
@@ -253,7 +310,7 @@ footer {
 }
 
 .footer-info {
-    margin: 85px 2.604vw;
+    margin: 4.42vw 2.604vw;
     align-self: baseline;
     color: #282828;
 }
