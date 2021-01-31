@@ -4,7 +4,7 @@
 
     <%- include('./partials/head.ejs') %> <!-- Includes HTML Configurations -->
 
-    <body>
+    <body id = 'home'>
         
         <%- include('./partials/nav.ejs') %> <!-- Includes navigation -->
 
@@ -18,48 +18,48 @@
 
         <h1>Featured Phones</h1>
 
-        <div>
-            <ul class = 'dark-shadow'>
-                <li class = 'featured'>iPhone 12 Pro
-                    <ul>
-                        <li class = 'subtitle'>by Apple</li>
-                    </ul>
-                </li>
-                <li class = 'featured'>iPhone 12 Pro
-                    <ul>
-                        <li class = 'subtitle'>by Apple</li>
-                    </ul>
-                </li>
-                <li class = 'featured'>iPhone 12 Pro
-                    <ul>
-                        <li class = 'subtitle'>by Apple</li>
-                    </ul>
-                </li>
-            </ul>
+        <div class = 'dark-shadow featured-container'>
+            <div class = 'featured'>
+                <p class = 'title'>iPhone 12 Pro</p>
+                <p class = 'subtitle'>by Apple</p>
+                <img src = '/img/iPhone12.png'>
+            </div>
+
+            <div class = 'featured'>
+                <p class = 'title'>Pixel 5</p>
+                <p class = 'subtitle'>by Google</p>
+                <img src = '/img/Pixel5.png'>
+            </div>
+
+            <div class = 'featured'>
+                <p class = 'title'>Galaxy S20</p>
+                <p class = 'subtitle'>by Samsung</p>
+                <img src = '/img/SamsungS20.png'>
+            </div>
         </div>
 
         <h1>Best Selling Phones</h1>
 
-        <div>
-            <ul class = 'dark-shadow'>
-                <li class = 'featured'>iPhone 12 Pro
-                    <ul>
-                        <li class = 'subtitle'>by Apple</li>
-                    </ul>
-                </li>
-                <li class = 'featured'>iPhone 12 Pro
-                    <ul>
-                        <li class = 'subtitle'>by Apple</li>
-                    </ul>
-                </li>
-                <li class = 'featured'>iPhone 12 Pro
-                    <ul>
-                        <li class = 'subtitle'>by Apple</li>
-                    </ul>
-                </li>
-            </ul>
+        <div class = 'dark-shadow featured-container'>
+            <div class = 'featured'>
+                <p class = 'title'>iPhone 12 Pro</p>
+                <p class = 'subtitle'>by Apple</p>
+                <img src = '/img/iPhone12.png'>
+            </div>
+
+            <div class = 'featured'>
+                <p class = 'title'>Pixel 5</p>
+                <p class = 'subtitle'>by Google</p>
+                <img src = '/img/Pixel5.png'>
+            </div>
+
+            <div class = 'featured'>
+                <p class = 'title'>Galaxy S20</p>
+                <p class = 'subtitle'>by Samsung</p>
+                <img src = '/img/SamsungS20.png'>
+            </div>
         </div>
-        
+
         <%- include('./partials/footer.ejs') %> <!-- Includes footer -->
 
     </body>
