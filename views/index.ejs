@@ -13,10 +13,18 @@
 
         <form id = "search-bar">
             <input type = "text" placeholder = "search" name = "search">
-            <button id = 'search-button' type = "submit"><img src = 'img/Search-icon.svg'></button>
+            <button type = "submit"></button>
         </form>
 
         <h1>Featured Phones</h1>
+
+        <div class = 'overlay'>
+            <% for( let i = 0; i < 3; i++ ) { %>
+                <div class = 'blur-container'>
+                    <p>See More ></p>
+                </div>
+            <% } %>
+        </div>
 
         <div class = 'dark-shadow featured-container'>
             <div class = 'featured'>
@@ -39,6 +47,14 @@
         </div>
 
         <h1>Best Selling Phones</h1>
+
+        <div class = 'overlay'>
+            <% for( let i = 0; i < 3; i++ ) { %>
+                <div class = 'blur-container'>
+                    <p>See More ></p>
+                </div>
+            <% } %>
+        </div>
 
         <div class = 'dark-shadow featured-container'>
             <div class = 'featured'>

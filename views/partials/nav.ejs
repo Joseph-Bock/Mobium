@@ -1,18 +1,24 @@
 <nav>
     <ul>
 
-        <li class = 'nav-link'><a>Apple</a></li>
-        <li class = 'nav-link'><a>Google</a></li>
+        <li class = 'nav-link'><a href = '/catalog'>Apple</a></li>
+        <li class = 'nav-link'><a href = '/catalog'>Google</a></li>
         <li><a href = '/' id = 'logo'>MOBIUM<span id = 'dot'>.</span></a></li>
-        <li class = 'nav-link'><a>Samsung</a></li>
-        <li class = 'nav-link'><a>Sony</a></li>
+        <li class = 'nav-link'><a href = '/catalog'>Samsung</a></li>
+        <li class = 'nav-link'><a href = '/catalog'>Sony</a></li>
 
     </ul>
 
     <ul id = 'cart-login'>
 
         <li class = 'nav-link'><a href = '/register'>Login</a></li>
-        <li class = 'nav-link'><img src = '/img/cart.svg'></li>
+        <li class = 'push-button'>
+            <img src = '/img/cart.svg'>
+            <div class="dropdown">
+                <div class="triangle"></div>
+                <div class="item-holder"></div>
+            </div>
+        </li>
 
     </ul>
 </nav>

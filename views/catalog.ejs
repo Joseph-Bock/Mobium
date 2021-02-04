@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang = 'en'>
+
+    <%- include('./partials/head.ejs') %> <!-- Includes HTML Configurations -->
+
+    <body id = 'catalog'>
+
+        <%- include('./partials/nav.ejs') %> <!-- Includes navigation -->
+        <%- include('./partials/search-bar.ejs') %> <!-- Includes search bar -->
+
+        <ul class = 'dark-shadow' id = 'filters'>
+            <li class = 'push-button'>Manufacturer
+                <div class = 'dropdown'>
+                    <div class = 'triangle'></div>
+                    <div class = 'item-holder'>
+                        <a>Apple</a>
+                        <a>Google</a>
+                        <a>Samsung</a>
+                        <a>Sony</a>
+                        <a>Huawei</a>
+                        <a>Xiaomi</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class = 'push-button'>Size
+                <div class = 'dropdown'>
+                    <div class = 'triangle'></div>
+                    <div class = 'item-holder'>
+                        <a>4 to 4.4 in</a>
+                        <a>4.5 to 4.9 in</a>
+                        <a>5 to 5.4 in</a>
+                        <a>5.5 in & above</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class = 'push-button'>Storage
+                <div class = 'dropdown'>
+                    <div class = 'triangle'></div>
+                    <div class = 'item-holder'>
+                        <a>8 GB</a>
+                        <a>18 GB</a>
+                        <a>32 GB</a>
+                        <a>64 GB</a>
+                        <a>128 GB</a>
+                        <a>256 GB</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class = 'push-button'>Internal Memory
+                <div class = 'dropdown'>
+                    <div class = 'triangle'></div>
+                    <div class = 'item-holder'>
+                        <a>4 GB</a>
+                        <a>6 GB</a>
+                        <a>8 GB</a>
+                        <a>12 GB</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class = 'push-button'>Color
+                <div class = 'dropdown'>
+                    <div class = 'triangle'></div>
+                    <div class = 'item-holder'>
+                        <a>Black</a>
+                        <a>White</a>
+                        <a>Red</a>
+                        <a>Green</a>
+                        <a>Blue</a>
+                        <a>Other</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class = 'push-button'>Features
+                <div class = 'dropdown'>
+                    <div class = 'triangle'></div>
+                    <div class = 'item-holder'>
+                        <a>LTE</a>
+                        <a>Dual Camera</a>
+                        <a>Dual Sim</a>
+                        <a>Waterproof</a>
+                        <a>OLED</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class = 'push-button'>Price
+                <div class = 'dropdown'>
+                    <div class = 'triangle'></div>
+                    <div class = 'item-holder'>
+                        <a>$50 to $100</a>
+                        <a>$100 to $150</a>
+                        <a>$150 to $250</a>
+                        <a>$250 to $400</a>
+                        <a>$400 to $600</a>
+                        <a>$600 & above</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div id = 'container'>
+
+            <h2>Applied Filters</h2>
+
+            <div id = 'filter-tag'>
+                <button>Apple</button>
+                <button>3 GB</button>
+                <button>256 GB</button>
+            </div>
+
+            <h2>Products</h2>
+
+            <div id = 'products'>
+                <% for( let i = 0; i <= 100; i++ ) { %>
+                    <button>
+                        <img src = 'img/iPhone12.png'>
+                        <p>iPhone 12 Pro</p>
+                        <p class = 'subtitle'>999$</p>
+                    </button>
+                <% } %>
+            </div>
+        </div>
+
+        <%- include('./partials/footer.ejs') %> <!-- Includes footer -->
+
+    </body>
+</html>

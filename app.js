@@ -20,6 +20,10 @@ app.get('/register', (req, res) => {
     res.render('register');
 })
 
+app.get('/catalog', (req, res) => {
+    res.render('catalog');
+})
+
 app.listen(process.env.PORT || 3000, () => {
     console.log("Server Initialized");
 })
