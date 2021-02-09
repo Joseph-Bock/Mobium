@@ -11,68 +11,85 @@
         <div id = 'banner'></div>
         <img id = 'arrow' src = '/img/Down-arrow.svg'>
 
-        <form id = "search-bar">
-            <input type = "text" placeholder = "search" name = "search">
-            <button type = "submit"></button>
-        </form>
+        <%- include('./partials/search-bar.ejs') %>
 
         <h1>Featured Phones</h1>
 
-        <div class = 'overlay'>
-            <% for( let i = 0; i < 3; i++ ) { %>
-                <div class = 'blur-container'>
-                    <p>See More ></p>
-                </div>
-            <% } %>
-        </div>
-
         <div class = 'dark-shadow featured-container'>
             <div class = 'featured'>
+
+                <div class = 'blur-container'>
+                    <a href = '/catalog'>See More ></a>
+                </div>
+
                 <p class = 'title'>iPhone 12 Pro</p>
                 <p class = 'subtitle'>by Apple</p>
                 <img src = '/img/iPhone12.png'>
+
             </div>
 
             <div class = 'featured'>
+
+                <div class = 'blur-container'>
+                    <a href = '/catalog'>See More ></a>
+                </div>
+
                 <p class = 'title'>Pixel 5</p>
                 <p class = 'subtitle'>by Google</p>
                 <img src = '/img/Pixel5.png'>
+
             </div>
 
             <div class = 'featured'>
+
+                <div class = 'blur-container'>
+                    <a href = '/catalog'>See More ></a>
+                </div>
+
                 <p class = 'title'>Galaxy S20</p>
                 <p class = 'subtitle'>by Samsung</p>
                 <img src = '/img/SamsungS20.png'>
+
             </div>
         </div>
 
         <h1>Best Selling Phones</h1>
 
-        <div class = 'overlay'>
-            <% for( let i = 0; i < 3; i++ ) { %>
-                <div class = 'blur-container'>
-                    <p>See More ></p>
-                </div>
-            <% } %>
-        </div>
-
         <div class = 'dark-shadow featured-container'>
             <div class = 'featured'>
+
+                <div class = 'blur-container'>
+                    <a href = '/catalog'>See More ></a>
+                </div>
+
                 <p class = 'title'>iPhone 12 Pro</p>
                 <p class = 'subtitle'>by Apple</p>
                 <img src = '/img/iPhone12.png'>
+
             </div>
 
             <div class = 'featured'>
+
+                <div class = 'blur-container'>
+                    <a href = '/catalog'>See More ></a>
+                </div>
+
                 <p class = 'title'>Pixel 5</p>
                 <p class = 'subtitle'>by Google</p>
                 <img src = '/img/Pixel5.png'>
+
             </div>
 
             <div class = 'featured'>
+
+                <div class = 'blur-container'>
+                    <a href = '/catalog'>See More ></a>
+                </div>
+
                 <p class = 'title'>Galaxy S20</p>
                 <p class = 'subtitle'>by Samsung</p>
                 <img src = '/img/SamsungS20.png'>
+
             </div>
         </div>
 

@@ -50,7 +50,7 @@
                 </div>
             </li>
 
-            <li class = 'push-button'>Internal Memory
+            <li class = 'push-button'>RAM
                 <div class = 'dropdown'>
                     <div class = 'triangle'></div>
                     <div class = 'item-holder'>
@@ -104,27 +104,24 @@
             </li>
         </ul>
 
-        <div id = 'container'>
+        <div id = 'filter-tag'>
+            <button>Apple</button>
+            <button>3 GB</button>
+            <button>256 GB</button>
+        </div>
 
-            <h2>Applied Filters</h2>
+        <div id = 'products'>
+            <% for( let i = 1; i <= 14; i++ ) { %>
+                <div class = 'product' id = 'item<%=i%>'>
+                    <p>iPhone 12 Pro</p>
+                    <img src = 'img/iPhone12.png'>
 
-            <div id = 'filter-tag'>
-                <button>Apple</button>
-                <button>3 GB</button>
-                <button>256 GB</button>
-            </div>
-
-            <h2>Products</h2>
-
-            <div id = 'products'>
-                <% for( let i = 0; i <= 100; i++ ) { %>
-                    <button>
-                        <img src = 'img/iPhone12.png'>
-                        <p>iPhone 12 Pro</p>
-                        <p class = 'subtitle'>999$</p>
-                    </button>
-                <% } %>
-            </div>
+                    <div class = 'cart-shortcut'>
+                        <p>999$ USD</p>
+                        <button class = 'button'></button>
+                    </div>
+                </div>
+            <% } %>
         </div>
 
         <%- include('./partials/footer.ejs') %> <!-- Includes footer -->
