@@ -178,8 +178,8 @@ nav ul {
     border-width: 2px;
     border-radius: 5px;
 
-    backdrop-filter: blur(30px) brightness(80%);
     -webkit-backdrop-filter: blur(30px) brightness(80%);
+    backdrop-filter: blur(30px) brightness(80%);
 }
 
 #home #search-bar {
@@ -410,8 +410,8 @@ input#male {
     border-right: solid;
     border-width: 2px;
     border-color: #B4B4B4;
-    backdrop-filter: blur(10px) brightness(80%);
     -webkit-backdrop-filter: blur(10px) brightness(80%);
+    backdrop-filter: blur(10px) brightness(80%);
 }
 
 .blur-container a {
@@ -564,8 +564,8 @@ input#male {
     height: clamp(0px, 2.08vw, 40px);
     bottom: -50px;
     border-radius: 5px;
-    backdrop-filter: blur(10px) brightness(80%);
     -webkit-backdrop-filter: blur(10px) brightness(80%);
+    backdrop-filter: blur(10px) brightness(80%);
     transition: bottom 0.3s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
