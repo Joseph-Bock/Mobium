@@ -9,7 +9,13 @@
   "author": "Joseph Herberth, Henrique Morata & Dante Caputo",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "ejs": "^3.1.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.10.0",
+    "method-override": "^3.0.0",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
   }
 }

@@ -1,6 +1,6 @@
- /* Global Properties*/
+/* Global Properties*/
  
-* {
+ * {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     font-size: clamp(16px, 1.04vw, 20px);
@@ -51,7 +51,7 @@ a {
 }
 
 .dark-shadow {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.45)
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
 }
 
 .button {
@@ -200,7 +200,7 @@ nav ul {
 
 #search-bar input {
     height: 100%;
-    width: 50%;
+    width: 85%;
     margin-left: 25px;
     color: white;
     background: transparent;
@@ -294,9 +294,17 @@ form .button {
     border-radius: 5px;
 }
 
-#register-form label {
+.register-label {
     justify-self: right;
     align-self: center;
+}
+
+.error-msg {
+    align-self: center;
+    justify-self: left;
+    grid-column: 3;
+    color: red;
+    font-weight: 400;
 }
 
 #birthdate {
@@ -344,7 +352,7 @@ input#male {
     outline-color: white;
 }
 
-#email-label{
+#email-label {
     grid-row: 5;
 }
 
@@ -352,18 +360,74 @@ input#male {
     align-self: center;
 }
 
-#login-prompt {
+.prompt {
     grid-column: 2;
     justify-self: center;
-    margin-top: 15px;
+    margin-top: 25px;
     font-weight: 400;
     color: #282828
 }
 
-#login-prompt a {
-    margin-left: 10px;
+#login-form {
+    z-index: 100;
+    visibility: hidden;
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+    margin-top: -64px;
+    margin-left: -200px;
+
+    text-align: center;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.45));
 }
 
+#login-form div {
+    width: 400px;
+    height: 177px;
+
+    border-radius: 5px 5px 0 0;
+    background-color: white;
+}
+
+#login-form .button {
+    margin-top: 0;
+    width: 100%;
+
+    border-radius: 0 0 5px 5px;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.45));
+}
+
+#login-form .prompt {
+    margin: 15px 0;
+}
+
+.login-input {
+    height: 40px;
+    width: 350px;
+    margin-top: 15px;
+
+    border-bottom: solid;
+    border-width: 2px;
+    border-color: #282828;
+
+    font-weight: 400;
+    color: #282828;
+}
+
+.login-input:first-of-type {
+    margin-top: 25px;
+}
+
+.login-input::placeholder {
+    color: #892fd8
+}
+
+.login-input:-webkit-autofill::first-line {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
 
 /* Featured Properties */
 
@@ -397,6 +461,7 @@ input#male {
 }
 
 .blur-container {
+    height: 100%;
     width: 100%;
     position: absolute;
     transition: backdrop-filter 0.1s linear,
@@ -416,6 +481,9 @@ input#male {
 
 .blur-container a {
     visibility: hidden;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
     color: white;
     font-size: clamp(36px, 2.08vw, 40px);
     line-height: clamp(300px, 20.8vw, 400px);
