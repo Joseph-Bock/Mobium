@@ -3,6 +3,7 @@
 <html lang = 'en'>
 
     <%- include('./partials/head.ejs') %> <!-- Includes HTML Configurations -->
+    <%- include('./partials/login.ejs') %> <!-- Includes Login popup -->
 
     <body>
 
@@ -47,6 +48,44 @@
                 <% if (typeof errors != 'undefined') { %>
                     <% if (errors.name) { %>
                         <label class = 'error-msg'><%= errors.name.msg %></label>
+                    <% } else {%>
+                        <label  class = 'error-msg'></label>
+                    <% } %>
+
+                    <% if (errors.lastname) { %>
+                        <label class = 'error-msg'><%= errors.lastname.msg %></label>
+                    <% } else {%>
+                        <label class = 'error-msg'></label>
+                    <% } %>
+
+                    <% if (errors.day) { %>
+                        <label class = 'error-msg'><%= errors.day.msg %></label>
+                    <% } else {%>
+                        <label class = 'error-msg'></label>
+                    <% } %>
+
+                    <% if (errors.gender) { %>
+                        <label class = 'error-msg'><%= errors.gender.msg %></label>
+                    <% } else {%>
+                        <label class = 'error-msg'></label>
+                    <% } %>
+
+                    <% if (errors.email) { %>
+                        <label class = 'error-msg'><%= errors.email.msg %></label>
+                    <% } else {%>
+                        <label class = 'error-msg'></label>
+                    <% } %>
+
+                    <% if (errors.password) { %>
+                        <label class = 'error-msg'><%= errors.password.msg %></label>
+                    <% } else {%>
+                        <label class = 'error-msg'></label>
+                    <% } %>
+
+                    <% if (errors.confirmation) { %>
+                        <label class = 'error-msg'><%= errors.confirmation.msg %></label>
+                    <% } else {%>
+                        <label class = 'error-msg'></label>
                     <% } %>
                 <% } %>
 

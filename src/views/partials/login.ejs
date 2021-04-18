@@ -4,6 +4,11 @@
         <input class = 'login-input' type = 'email' name = 'email' placeholder = 'Email'>
         <input class = 'login-input' type = 'password' name = 'password' placeholder = 'Password'>
         <p class = 'prompt'>Don't have an account? <a href = '/register'>Register</a></p>
+
+        <% if (locals.loginError != undefined) { %>
+            <p id = 'login-error'><%= locals.loginError %></p>
+        <% } %>
+
     </div>
 
     <button class = 'button'>Log in</button>

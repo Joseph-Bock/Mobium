@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang = 'en'>
 
     <%- include('./partials/head.ejs') %> <!-- Includes HTML Configurations -->
     <%- include('./partials/login.ejs') %> <!-- Includes Login popup -->
@@ -10,10 +10,13 @@
         <%- include('./partials/nav.ejs') %> <!-- Includes navigation -->
 
         <div id = 'banner'></div>
-        <img id = 'arrow' src = '/img/Down-arrow.svg'>
 
         <%- include('./partials/search-bar.ejs') %>
 
+        <a href = '#arrow'>
+            <img id = 'arrow' src = '/img/Down-arrow.svg'>
+        </a>
+        
         <h1>Featured Phones</h1>
 
         <div class = 'dark-shadow featured-container'>

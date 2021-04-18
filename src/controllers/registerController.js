@@ -11,33 +11,53 @@ const controller = {
     },
 
 
-    //Validation and Creation of new users
-    
-    createUser: (req, res) => {
+    //Validation of data
+
+    checkData: (req, res) => {
         let errors = validationResult(req);
-        console.log(errors);
-        
-        if (errors.isEmpty()) {
-            let info = req.body;
+        let info = req.body;
 
-            db.Users.create({
-                name: info.name,
-                lastname: info.lastname,
-                birthdate: new Date(info.year + '-' + info.month + '-' + info.day),
-                gender: info.gender,
-                email: info.email,
-                password: bcrypt.hashSync(info.password, 12),
-                admin: 0
-            }).then(
-                res.redirect('/')
-            ).catch(error => {
-                console.log(error);
-            }) 
+        db.Users.findOne({
+            where: {
+                email: info.email
+            }
+        }).then(user => {
+            errors = errors.mapped({onlyFirstError: true});
+            
+            if (user) {
+                let error = {
+                    value: '',
+                    msg: 'Email is already in use!',
+                    param: 'email',
+                    location: 'body'
+                }
+                errors.email = error;
+            }
+            res.render('register', {errors: errors});
 
-        } else {
-            res.render('register', {errors: errors.mapped({onlyFirstError: true})});
-        };
+        }).catch(error => {
+            console.log(error);
+        })
+    },
+    
+    createUser: async (req, res) => {
+        let info = req.body;
+
+        db.Users.create({
+            name: info.name,
+            lastname: info.lastname,
+            birthdate: new Date(info.year + '/' + info.month + '/' + info.day),
+            gender: info.gender,
+            email: info.email,
+            password: await bcrypt.hash(info.password, 12),
+            admin: 0
+
+        }).then(
+            res.redirect('/')
+        ).catch(error => {
+            console.log(error);
+        });
     }
-}
+};
 
 module.exports = controller;
