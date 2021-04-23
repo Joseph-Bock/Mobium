@@ -2,6 +2,16 @@ const db = require('../../database/models');
 const {validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 
+const inputs = {
+    name: {},
+	lastname: {},
+	day: {},
+    gender: {},
+    email: {},
+    password: {},
+    confirmation: {}
+}
+
 const controller = {
 
     //Show Register page
@@ -15,15 +25,13 @@ const controller = {
 
     checkData: (req, res) => {
         let errors = validationResult(req);
-        let info = req.body;
+        const info = req.body;
 
         db.Users.findOne({
             where: {
                 email: info.email
             }
-        }).then(user => {
-            errors = errors.mapped({onlyFirstError: true});
-            
+        }).then(user => {      
             if (user) {
                 let error = {
                     value: '',
@@ -31,16 +39,24 @@ const controller = {
                     param: 'email',
                     location: 'body'
                 }
-                errors.email = error;
+                errors.errors.push(error);
             }
-            res.render('register', {errors: errors});
-
+            
+            if (errors.isEmpty()) {
+                controller.createUser(req, res);
+            } else {
+                errors = errors.mapped({onlyFirstError: true});
+                res.render('register', {data: {errors: errors, inputs: inputs, info: info}});
+            }
         }).catch(error => {
             console.log(error);
         })
     },
-    
-    createUser: async (req, res) => {
+
+
+    //Create user and save it to database
+
+    createUser: (req, res) => {
         let info = req.body;
 
         db.Users.create({
@@ -49,9 +65,9 @@ const controller = {
             birthdate: new Date(info.year + '/' + info.month + '/' + info.day),
             gender: info.gender,
             email: info.email,
-            password: await bcrypt.hash(info.password, 12),
+            password: bcrypt.hashSync(info.password, 12),
             admin: 0
-
+            
         }).then(
             res.redirect('/')
         ).catch(error => {

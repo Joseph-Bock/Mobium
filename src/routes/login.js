@@ -1,22 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const {body} = require('express-validator');
 
+const dataValidator = require('../middlewares/dataValidation');
 const controller = require('../controllers/loginController');
 
 
-//Validations
-
-const validateForm = [
-    body('email').custom((value, {req}) => {
-        if (!value || !req.body.password) {
-            throw new Error('Enter valid credentials!');
-        }
-
-        return true;
-    })
-]
-
-router.post('/', validateForm, controller.validateLogin);
+router.post('/', dataValidator.Login, controller.validateLogin);
 
 module.exports = router;

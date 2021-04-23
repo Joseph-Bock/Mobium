@@ -1,24 +1,56 @@
 <nav>
-    <ul>
+    <script src = '/js/navFunctions.js'></script>
 
+    <label id = 'hamburguer' for = 'checkbox'></label>
+    <input id = 'checkbox' type = 'checkbox'>
+
+    <ul>
         <li class = 'nav-link'><a href = '/catalog'>Apple</a></li>
         <li class = 'nav-link'><a href = '/catalog'>Google</a></li>
         <li><a href = '/' id = 'logo'>MOBIUM<span id = 'dot'>.</span></a></li>
         <li class = 'nav-link'><a href = '/catalog'>Samsung</a></li>
         <li class = 'nav-link'><a href = '/catalog'>Sony</a></li>
-
     </ul>
 
-    <ul id = 'cart-login'>
+    <div id = 'cart-login'>
+        <% if (locals.user) { %>
+            <a class = 'nav-link' id = 'login' href = '/profile'><%= 'Hi, ' + locals.user.name %></a>
+        <% } else { %>
+            <div class = 'nav-link' id = 'login'>Login</div> 
+        <% } %>
 
-        <li class = 'nav-link'><a href = '/register'>Login</a></li>
-        <li class = 'push-button'>
-            <a href = '/cart'><img src = '/img/cart.svg' alt = 'cart'></a>
-            <div class="dropdown">
+        <div class = 'push-button' id = 'cart'>
+            <a href = '/cart'></a>
+            <div class="dropdown" id = 'cartDrop'>
                 <div class="triangle"></div>
                 <div class="item-holder"></div>
             </div>
         </li>
-
-    </ul>
+    </div>
 </nav>
+
+<div id = 'menu'>
+
+    <% if (locals.user) { %>
+        <p><%= 'Hi, ' + user.name %></p>
+        <button class = 'button' id = 'hamLogout'>Logout</button>
+    <% } else { %>
+        <button class = 'button' id = 'hamLogin'>Login</button>
+    <% } %>
+
+    <ol id = 'content-list'>
+        <ol>Catalog >
+            <li><a class = 'nav-link' href = '/catalog'>Apple</a></li>
+            <li><a class = 'nav-link' href = '/catalog'>Google</a></li>
+            <li><a class = 'nav-link' href = '/catalog'>Samsung</a></li>
+            <li><a class = 'nav-link' href = '/catalog'>Sony</a></li>
+        </ol>
+
+        <ol>Admin Panel ></ol>
+    </ol>
+
+    <div>
+        <a>Settings</a>
+        <img src = '/img/icons/Gear.svg'>
+    </div>
+</div>

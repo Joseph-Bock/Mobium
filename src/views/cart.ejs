@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 
-<html lang = 'en'>
-    <%- include('./partials/head.ejs') %> <!-- Includes HTML Configurations -->
+<html>
 
-    <body>
-        <%- include('./partials/nav.ejs') %> <!-- Includes navigation -->
-    </body>
+    <div>
+        <label id = 'icon' for = 'checkbox'>Hey</label>
+        <input id = 'checkbox' type = 'checkbox'>
+    </div>
+
+    <style>
+        label:hover ~ input {
+            height: 100px;
+        }
+    </style>
 </html>

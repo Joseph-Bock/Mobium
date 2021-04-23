@@ -13,16 +13,17 @@ const controller = {
         if (errors.isEmpty()) {
             delete req.session.loginError;
             
-            db.Users.findOne({
+            db.Users.findOne({raw: true,
                 where: {
                     email: info.email
                 }
             }).then(user => {
                 if (bcrypt.compareSync(info.password, user.password)) {
-                    console.log(user.name + ' ' + user.lastname + ' - Login succesful!')
+                    delete user.password;
+                    req.session.user = user;
+
                     res.redirect('back');
                 } else {
-                    console.log('Wrong credentials!');
                     req.session.loginError = 'Wrong credentials!';
                     res.redirect('back');
                 };

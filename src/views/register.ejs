@@ -16,14 +16,65 @@
 
             <form id = 'register-form' action = '/register' method = 'POST'>
 
-                <input class = 'form-input' type = 'text' id = 'firstname' name = 'name'>
-                <input class = 'form-input' type = 'text' id = 'lastname' name = 'lastname'>
+                <label class = 'hidden-label' for = 'firstname'>First Name</label>
+                <% if (typeof data != 'undefined') { %>
+                    <input class = 'form-input' type = 'text' id = 'firstname' name = 'name' value = <%= data.info.name%>>
+                <% } else { %>
+                    <input class = 'form-input' type = 'text' id = 'firstname' name = 'name'>
+                <% } %>
 
+                <% if (typeof data != 'undefined') { %>
+                    <% const errors = data.errors; %>
+
+                    <% if (errors.name) { %>
+                        <p class = 'under-error'><%= errors.name.msg %></p>
+                    <% } else { %>
+                        <p class = 'under-error'></p>
+                    <% } %>
+                <% } else { %>
+                    <p class = 'under-error'></p>
+                <% } %>
+
+
+                <label class = 'hidden-label' for = 'lastname'>Last Name</label>
+                <% if (typeof data != 'undefined') { %>
+                    <input class = 'form-input' type = 'text' id = 'lastname' name = 'lastname' value = <%= data.info.lastname%>>
+                <% } else { %>
+                    <input class = 'form-input' type = 'text' id = 'lastname' name = 'lastname'>
+                <% } %>
+
+                <% if (typeof data != 'undefined') { %>
+                    <% const errors = data.errors; %>
+
+                    <% if (errors.lastname) { %>
+                        <p class = 'under-error'><%= errors.lastname.msg %></p>
+                    <% } else { %>
+                        <p class = 'under-error'></p>
+                    <% } %>
+                <% } else { %>
+                    <p class = 'under-error'></p>
+                <% } %>
+
+
+                <label class = 'hidden-label' for = 'birthdate'>Date of Birth</label>
                 <div id = 'birthdate'>
                     <input class = 'form-input' type = 'number' id = 'day' name = 'day' min = 1 max = 31 placeholder = 'day'>
                     <input class = 'form-input' type = 'number' id = 'month' name = 'month' min = 1 max = 12 placeholder = 'month'>
                     <input class = 'form-input' type = 'number' id = 'year' name = 'year' min = 1900 max = 2008 placeholder = 'year'>
                 </div>
+
+                <% if (typeof data != 'undefined') { %>
+                    <% const errors = data.errors; %>
+
+                    <% if (errors.day) { %>
+                        <p class = 'under-error'><%= errors.day.msg %></p>
+                    <% } else { %>
+                        <p class = 'under-error'></p>
+                    <% } %>
+                <% } else { %>
+                    <p class = 'under-error'></p>
+                <% } %>
+
 
                 <div id = 'genders'>
                     <label for = 'female'>Female</label>
@@ -33,59 +84,88 @@
                     <input class = 'form-input' type = 'radio' id = 'male' name = 'gender' value = 'male'>
                 </div>
 
-                <input class = 'form-input' type = 'email' id = 'email' name = 'email'>
-                <input class = 'form-input' type = 'password' id = 'password' name = 'password'>
-                <input class = 'form-input' type = 'password' id = 'confirmation' name = 'confirmation'>
-
-                <label class = 'register-label' for = 'firstname'>First Name</label>
-                <label class = 'register-label' for = 'lastname'>Last Name</label>
-                <label class = 'register-label' for = 'birthday'>Date of Birth</label>
-                <label class = 'register-label' id = 'email-label' for = 'email'>Email</label>
-                <label class = 'register-label' for = 'password'>Password</label>
-                <label class = 'register-label' for = 'confirmation'>Repeat Password</label>
-
-                <!-- Code to show form errors, incomplete, might be done with JSFront -->
-                <% if (typeof errors != 'undefined') { %>
-                    <% if (errors.name) { %>
-                        <label class = 'error-msg'><%= errors.name.msg %></label>
-                    <% } else {%>
-                        <label  class = 'error-msg'></label>
-                    <% } %>
-
-                    <% if (errors.lastname) { %>
-                        <label class = 'error-msg'><%= errors.lastname.msg %></label>
-                    <% } else {%>
-                        <label class = 'error-msg'></label>
-                    <% } %>
-
-                    <% if (errors.day) { %>
-                        <label class = 'error-msg'><%= errors.day.msg %></label>
-                    <% } else {%>
-                        <label class = 'error-msg'></label>
-                    <% } %>
+                <% if (typeof data != 'undefined') { %>
+                    <% const errors = data.errors; %>
 
                     <% if (errors.gender) { %>
-                        <label class = 'error-msg'><%= errors.gender.msg %></label>
-                    <% } else {%>
-                        <label class = 'error-msg'></label>
+                        <p class = 'under-error'><%= errors.gender.msg %></p>
+                    <% } else { %>
+                        <p class = 'under-error'></p>
                     <% } %>
+                <% } else { %>
+                    <p class = 'under-error'></p>
+                <% } %>
+
+
+                <label class = 'hidden-label' for = 'email'>Email</label>
+                <% if (typeof data != 'undefined') { %>
+                    <input class = 'form-input' type = 'email' id = 'email' name = 'email' value = <%= data.info.email%>>
+                <% } else { %>
+                    <input class = 'form-input' type = 'email' id = 'email' name = 'email'>
+                <% } %>
+
+                <% if (typeof data != 'undefined') { %>
+                    <% const errors = data.errors; %>
 
                     <% if (errors.email) { %>
-                        <label class = 'error-msg'><%= errors.email.msg %></label>
-                    <% } else {%>
-                        <label class = 'error-msg'></label>
+                        <p class = 'under-error'><%= errors.email.msg %></p>
+                    <% } else { %>
+                        <p class = 'under-error'></p>
                     <% } %>
+                <% } else { %>
+                    <p class = 'under-error'></p>
+                <% } %>
+                
+
+                <label class = 'hidden-label' for = 'password'>Password</label>
+                <input class = 'form-input' type = 'password' id = 'password' name = 'password'>
+
+                <% if (typeof data != 'undefined') { %>
+                    <% const errors = data.errors; %>
 
                     <% if (errors.password) { %>
-                        <label class = 'error-msg'><%= errors.password.msg %></label>
-                    <% } else {%>
-                        <label class = 'error-msg'></label>
+                        <p class = 'under-error'><%= errors.password.msg %></p>
+                    <% } else { %>
+                        <p class = 'under-error'></p>
                     <% } %>
+                <% } else { %>
+                    <p class = 'under-error'></p>
+                <% } %>
+
+
+                <label class = 'hidden-label' for = 'confirmation'>Repeat Password</label>
+                <input class = 'form-input' type = 'password' id = 'confirmation' name = 'confirmation'>
+
+                <% if (typeof data != 'undefined') { %>
+                    <% const errors = data.errors; %>
 
                     <% if (errors.confirmation) { %>
-                        <label class = 'error-msg'><%= errors.confirmation.msg %></label>
-                    <% } else {%>
-                        <label class = 'error-msg'></label>
+                        <p class = 'under-error'><%= errors.confirmation.msg %></p>
+                    <% } else { %>
+                        <p class = 'under-error'></p>
+                    <% } %>
+                <% } else { %>
+                    <p class = 'under-error'></p>
+                <% } %>
+
+
+                <label class = 'register-label'>First Name</label>
+                <label class = 'register-label'>Last Name</label>
+                <label class = 'register-label'>Date of Birth</label>
+                <label class = 'register-label' id = 'email-label'>Email</label>
+                <label class = 'register-label'>Password</label>
+                <label class = 'register-label'>Repeat Password</label>
+
+                <% if (typeof data != 'undefined') { %>
+                    <% const errors = data.errors; %>
+                    <% const inputs = data.inputs; %>
+
+                    <% for (const [key, value] of Object.entries(inputs)) { %>
+                        <% if (errors[key]) { %>
+                            <label class = 'error-msg'><%= errors[key].msg %></label>
+                        <% } else { %>
+                            <label class = 'error-msg'></label>
+                        <% } %>
                     <% } %>
                 <% } %>
 
