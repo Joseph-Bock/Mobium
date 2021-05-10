@@ -8,14 +8,16 @@ const home = require('./routes/home');
 const register = require('./routes/register');
 const login = require('./routes/login');
 const logout = require('./routes/logout');
+const users = require('./routes/users');
+const products = require('./routes/products');
 const catalog = require('./routes/catalog');
 const cart = require('./routes/cart');
-
 
 //Middlewares
 
 const globalData = require('./middlewares/globalData');
 const guestRoutes = require('./middlewares/guestRoutes');
+
 
 // Express Setup
 
@@ -47,9 +49,17 @@ app.use('/login', guestRoutes, login);
 
 app.use('/logout', logout);
 
+app.use('/users', users);
+
+app.use('/products', products);
+
 app.use('/catalog', catalog);
 
 app.use('/cart', cart);
+
+app.use('/', (req, res) => {
+    return res.redirect('/');
+});
 
 
 //Set up Server on Port 3000

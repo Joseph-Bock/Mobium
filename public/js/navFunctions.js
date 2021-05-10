@@ -1,7 +1,7 @@
 window.addEventListener('load', function () {
 
     console.log('Site has finished loading');
-
+    
     //Function to open Navigation in mobile
 
     const hamButton = document.querySelector('#hamburguer');
@@ -22,22 +22,45 @@ window.addEventListener('load', function () {
 
     //Function to bring down the Login menu
 
-    function openLogin() { //Open login menu
-        if (login.style.top == '-200px' || login.offsetTop == -200) {
-            login.style.top = 'calc(50% + 50px)';
-        } else {
-            login.style.top = '-200px';
+    const blur = document.querySelector('#back-blur');
+    const login = document.querySelector('.login-form');
+
+    if (login && login.id == 'shift-login') {
+        blur.style.opacity = 1;
+        blur.style.display = 'inline-block';
+    }
+
+    function openLogin() {
+
+        let offset = document.querySelector('nav').offsetHeight;
+        let position = ((window.innerHeight + offset) / 2);
+
+        if (login.offsetTop == '-100') {
+
+            login.style.top = position + 'px';
+            blur.style.opacity = 1;
+            blur.style.top = 'unset';
+
+        } else if (login.offsetTop - position <= 0.5) {
+
+            login.style.top = '-100px';
+            blur.style.opacity = 0;
+            
+            setTimeout(() => {
+                blur.style.top = '-100%';
+            }, 400);
         }
     };
 
-    const login = document.querySelector('.login-form');
     const loginButton = document.querySelector('#login');
 
     if (hamLogin = document.querySelector('#hamLogin')) {
         hamLogin.addEventListener('click', openLogin);
     }
 
-    loginButton.addEventListener('click', openLogin);
+    loginButton ? blur.addEventListener('click', openLogin) : undefined;
+    loginButton ? loginButton.addEventListener('click', openLogin) : undefined;
+
 
     //Function to Logout
 

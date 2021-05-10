@@ -1,6 +1,7 @@
-<nav>
-    <script src = '/js/navFunctions.js'></script>
+<script src = '/js/navFunctions.js'></script>
+<div id = 'back-blur'></div>
 
+<nav>
     <label id = 'hamburguer' for = 'checkbox'></label>
     <input id = 'checkbox' type = 'checkbox'>
 
@@ -14,16 +15,18 @@
 
     <div id = 'cart-login'>
         <% if (locals.user) { %>
-            <a class = 'nav-link' id = 'login' href = '/profile'><%= 'Hi, ' + locals.user.name %></a>
+            <a class = 'nav-link' href = '/profile'><img id = 'profile-picture' src = <%= '/img/profileImages/' + (locals.user.image ? locals.user.image : 'default.png') %>></a>
         <% } else { %>
             <div class = 'nav-link' id = 'login'>Login</div> 
         <% } %>
 
         <div class = 'push-button' id = 'cart'>
             <a href = '/cart'></a>
-            <div class="dropdown" id = 'cartDrop'>
-                <div class="triangle"></div>
-                <div class="item-holder"></div>
+
+            <div class = 'dropdown' id = 'cart-dropdown'>
+                <div class = 'triangle'></div>
+                <ul class = 'content-list'>
+                </ul>
             </div>
         </li>
     </div>
@@ -32,7 +35,7 @@
 <div id = 'menu'>
 
     <% if (locals.user) { %>
-        <p><%= 'Hi, ' + user.name %></p>
+        <p><%= 'Hi, ' + user.firstname %></p>
         <button class = 'button' id = 'hamLogout'>Logout</button>
     <% } else { %>
         <button class = 'button' id = 'hamLogin'>Login</button>
@@ -54,3 +57,11 @@
         <img src = '/img/icons/Gear.svg'>
     </div>
 </div>
+
+<% if (locals.user) { %>
+    <% if (locals.user.admin) { %>
+        <%- include('../partials/admin-panel.ejs') %> <!-- Includes Admin Panel -->
+    <% } %>
+<% } else { %>
+    <%- include('../partials/login.ejs') %> <!-- Includes Login popup -->
+<% } %>

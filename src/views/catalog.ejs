@@ -3,107 +3,108 @@
 <html lang = 'en'>
 
     <%- include('./partials/head.ejs') %> <!-- Includes HTML Configurations -->
-    <%- include('./partials/login.ejs') %> <!-- Includes Login popup -->
 
     <body id = 'catalog'>
 
         <%- include('./partials/nav.ejs') %> <!-- Includes navigation -->
         <%- include('./partials/search-bar.ejs') %> <!-- Includes search bar -->
 
-        <ul class = 'dark-shadow' id = 'filters'>
-            <li class = 'push-button'>Manufacturer
-                <div class = 'dropdown'>
-                    <div class = 'triangle'></div>
-                    <div class = 'item-holder'>
-                        <a>Apple</a>
-                        <a>Google</a>
-                        <a>Samsung</a>
-                        <a>Sony</a>
-                        <a>Huawei</a>
-                        <a>Xiaomi</a>
+        <div id = 'container'>
+            <ol id = 'content'>
+                <li class = 'push-button'>Manufacturer
+                    <div class = 'dropdown'>
+                        <div class = 'triangle'></div>
+                        <ul class = 'content-list'>
+                            <li>Apple</li>
+                            <li>Google</li>
+                            <li>Samsung</li>
+                            <li>Sony</li>
+                            <li>Huawei</li>
+                            <li>Xiaomi</li>
+                        </ul>
                     </div>
-                </div>
-            </li>
-
-            <li class = 'push-button'>Size
-                <div class = 'dropdown'>
-                    <div class = 'triangle'></div>
-                    <div class = 'item-holder'>
-                        <a>4 to 4.4 in</a>
-                        <a>4.5 to 4.9 in</a>
-                        <a>5 to 5.4 in</a>
-                        <a>5.5 in & above</a>
+                </li>
+    
+                <li class = 'push-button'>Size
+                    <div class = 'dropdown'>
+                        <div class = 'triangle'></div>
+                        <ul class = 'content-list'>
+                            <li>4 to 4.4 in</li>
+                            <li>4.5 to 4.9 in</li>
+                            <li>5 to 5.4 in</li>
+                            <li>5.5 in & above</li>
+                        </ul>
                     </div>
-                </div>
-            </li>
-
-            <li class = 'push-button'>Storage
-                <div class = 'dropdown'>
-                    <div class = 'triangle'></div>
-                    <div class = 'item-holder'>
-                        <a>8 GB</a>
-                        <a>18 GB</a>
-                        <a>32 GB</a>
-                        <a>64 GB</a>
-                        <a>128 GB</a>
-                        <a>256 GB</a>
+                </li>
+    
+                <li class = 'push-button'>Storage
+                    <div class = 'dropdown'>
+                        <div class = 'triangle'></div>
+                        <ul class = 'content-list'>
+                            <li>8 GB</li>
+                            <li>18 GB</li>
+                            <li>32 GB</li>
+                            <li>64 GB</li>
+                            <li>128 GB</li>
+                            <li>256 GB</li>
+                        </ul>
                     </div>
-                </div>
-            </li>
-
-            <li class = 'push-button'>RAM
-                <div class = 'dropdown'>
-                    <div class = 'triangle'></div>
-                    <div class = 'item-holder'>
-                        <a>4 GB</a>
-                        <a>6 GB</a>
-                        <a>8 GB</a>
-                        <a>12 GB</a>
+                </li>
+    
+                <li class = 'push-button'>RAM
+                    <div class = 'dropdown'>
+                        <div class = 'triangle'></div>
+                        <ul class = 'content-list'>
+                            <li>4 GB</li>
+                            <li>6 GB</li>
+                            <li>8 GB</li>
+                            <li>12 GB</li>
+                        </ul>
                     </div>
-                </div>
-            </li>
-
-            <li class = 'push-button'>Color
-                <div class = 'dropdown'>
-                    <div class = 'triangle'></div>
-                    <div class = 'item-holder'>
-                        <a>Black</a>
-                        <a>White</a>
-                        <a>Red</a>
-                        <a>Green</a>
-                        <a>Blue</a>
-                        <a>Other</a>
+                </li>
+    
+                <li class = 'push-button'>Color
+                    <div class = 'dropdown'>
+                        <div class = 'triangle'></div>
+                        <ul class = 'content-list'>
+                            <li>Black</li>
+                            <li>White</li>
+                            <li>Red</li>
+                            <li>Green</li>
+                            <li>Blue</li>
+                            <li>Other</li>
+                        </ul>
                     </div>
-                </div>
-            </li>
-
-            <li class = 'push-button'>Features
-                <div class = 'dropdown'>
-                    <div class = 'triangle'></div>
-                    <div class = 'item-holder'>
-                        <a>LTE</a>
-                        <a>Dual Camera</a>
-                        <a>Dual Sim</a>
-                        <a>Waterproof</a>
-                        <a>OLED</a>
+                </li>
+    
+                <li class = 'push-button'>Features
+                    <div class = 'dropdown'>
+                        <div class = 'triangle'></div>
+                        <ul class = 'content-list'>
+                            <li>LTE</li>
+                            <li>Dual Camera</li>
+                            <li>Dual Sim</li>
+                            <li>Waterproof</li>
+                            <li>OLED</li>
+                        </ul>
                     </div>
-                </div>
-            </li>
-
-            <li class = 'push-button'>Price
-                <div class = 'dropdown'>
-                    <div class = 'triangle'></div>
-                    <div class = 'item-holder'>
-                        <a>$50 to $100</a>
-                        <a>$100 to $150</a>
-                        <a>$150 to $250</a>
-                        <a>$250 to $400</a>
-                        <a>$400 to $600</a>
-                        <a>$600 & above</a>
+                </li>
+    
+                <li class = 'push-button'>Price
+                    <div class = 'dropdown'>
+                        <div class = 'triangle'></div>
+                        <ul class = 'content-list'>
+                            <li>$50 to $100</li>
+                            <li>$100 to $150</li>
+                            <li>$150 to $250</li>
+                            <li>$250 to $400</li>
+                            <li>$400 to $600</li>
+                            <li>$600 & above</li>
+                        </ul>
                     </div>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ol>
+        </div>
 
         <div id = 'filter-tag'>
             <button>Apple</button>

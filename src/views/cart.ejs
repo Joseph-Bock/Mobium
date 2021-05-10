@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 
-<html>
+<html lang = 'en'>
 
-    <div>
-        <label id = 'icon' for = 'checkbox'>Hey</label>
-        <input id = 'checkbox' type = 'checkbox'>
-    </div>
+    <%- include('./partials/head.ejs') %> <!-- Includes HTML Configurations -->
 
-    <style>
-        label:hover ~ input {
-            height: 100px;
-        }
-    </style>
+    <body>
+
+        <%- include('./partials/nav.ejs') %> <!-- Includes navigation -->
+        <%- include('./partials/search-bar.ejs') %> <!-- Includes search bar -->
+
+
+
+        <%- include('./partials/footer.ejs') %> <!-- Includes footer -->
+
+    </body>
 </html>

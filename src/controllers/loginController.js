@@ -18,11 +18,15 @@ const controller = {
                     email: info.email
                 }
             }).then(user => {
-                if (bcrypt.compareSync(info.password, user.password)) {
-                    delete user.password;
-                    req.session.user = user;
-
-                    res.redirect('back');
+                if (user) {
+                    if (bcrypt.compareSync(info.password, user.password)) {
+                        delete user.password;
+                        req.session.user = user;
+                        res.redirect('back');
+                    } else {
+                        req.session.loginError = 'Credentials do not match!';
+                        res.redirect('back');
+                    }
                 } else {
                     req.session.loginError = 'Wrong credentials!';
                     res.redirect('back');

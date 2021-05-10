@@ -7,7 +7,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
 
-        name: {
+        firstname: {
             type: dataTypes.STRING,
             allowNull: false
         },
@@ -20,6 +20,11 @@ module.exports = (sequelize, dataTypes) => {
         birthdate: {
             type: dataTypes.DATEONLY,
             allowNull: false
+        },
+
+        image: {
+            type: dataTypes.STRING,
+            allowNull: true
         },
 
         email: {
@@ -39,7 +44,7 @@ module.exports = (sequelize, dataTypes) => {
 
         admin: {
             type: dataTypes.TINYINT,
-            allowNull: false,
+            allowNull: false
         }
     })
 

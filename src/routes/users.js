@@ -1,10 +1,12 @@
 const express = require('express');
-const multer = require('multer');
 const router = express.Router();
+const multer = require('multer');
 const path = require('path');
 
 const dataValidator = require('../middlewares/dataValidation');
-const controller = require('../controllers/registerController');
+const adminRoutes = require('../middlewares/adminRoutes');
+const controller = require('../controllers/usersController');
+
 
 //Multer Config
 
@@ -22,13 +24,12 @@ const multerDiskStorage = multer.diskStorage({
 
 const uploadFile = multer({ storage : multerDiskStorage });
 
-//Show Register page
 
-router.get('/', controller.index);
+//Setting Routes
 
-
-//Send Register Form data
-
-router.post('/', uploadFile.single('image'), dataValidator.Registration, controller.checkData);
+router.get('/:id', adminRoutes, controller.get);
+router.post('/', adminRoutes, uploadFile.single('image'), dataValidator.Registration, controller.create);
+router.put('/', adminRoutes, uploadFile.single('image'), dataValidator.Registration, controller.update);
+router.delete('/:id', adminRoutes, controller.delete);
 
 module.exports = router;

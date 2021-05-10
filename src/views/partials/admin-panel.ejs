@@ -1,0 +1,96 @@
+<div id = 'admin-panel'>
+
+    <script src = '/js/adminFunctions.js'></script>
+
+    <div>
+        <button id = 'user-button' class = 'push-button'>User Configuration</button>
+        <button id = 'product-button' class = 'push-button'>Product Configuration</button>
+    </div>
+
+    <form id = 'user-admin' action = '/users' method = 'POST' enctype = 'multipart/form-data'>
+
+        <label for = 'id'>User ID</label>
+        <input type = 'number' class = 'id' name = 'id'>
+
+        <label for = 'firstname'>First Name</label>
+        <input type = 'text' class = 'firstname' name = 'firstname'>
+        <label class = 'error-msg' for = 'firstname'></label>
+
+        <label for = 'lastname'>Last Name</label>
+        <input type = 'text' class = 'lastname' name = 'lastname'>
+        <label class = 'error-msg' for = 'lastname'></label>
+
+        <label for = 'birthdate'>Date of Birth</label>
+        <div class = 'birthdate'>
+            <input type = 'number' class = 'day' name = 'day' min = 1 max = 31 placeholder = 'day'>
+            <input type = 'number' class = 'month' name = 'month' min = 1 max = 12 placeholder = 'month'>
+            <input type = 'number' class = 'year' name = 'year' min = 1900 max = 2008 placeholder = 'year'>
+        </div>
+        <label class = 'error-msg' for = 'birthdate'></label>
+
+        <div class = 'gender'>
+            <label for = 'female'>Female</label>
+            <input type = 'radio' name = 'gender' class = 'female' value = 'female'>
+
+            <label for = 'male'>Male</label>
+            <input type = 'radio' name = 'gender' class = 'male' value = 'male'>
+        </div>
+        <label class = 'error-msg' for = 'gender'></label>
+
+        <label for = 'image'>Profile Picture</label>
+        <input type = 'file' class = 'fileButton' name = 'image'>
+        <label class = 'error-msg' for = 'image'></label>
+
+        <label for = 'email'>Email</label>
+        <input type = 'email' class = 'email' name = 'email'>
+        <label class = 'error-msg' for = 'email'></label>
+
+        <label for = 'password'>Password</label>
+        <input type = 'password' class = 'password' name = 'password'>
+        <label class = 'error-msg' for = 'password'></label>
+
+        <label for = 'confirmation'>Repeat Password</label>
+        <input type = 'password' class = 'confirmation' name = 'confirmation'>
+        <label class = 'error-msg' for = 'confirmation'></label>
+
+        <button>Submit</button>
+        <button class = 'delete'>Delete</button>
+
+    </form>
+
+    <form id = 'product-admin' action = '/products' method = 'POST' enctype = 'multipart/form-data'>
+
+        <label for = 'id'>Product ID</label>
+        <input type = 'number' class = 'id' name = 'id'>
+        <label class = 'error-msg' for = 'id'></label>
+
+        <label for = 'name'>Name</label>
+        <input type = 'text' class = 'name' name = 'name'>
+        <label class = 'error-msg' for = 'name'></label>
+
+        <label for = 'manufacturer'>Manufacturer</label>
+        <select class = 'manufacturer' name = 'manufacturer'>
+            <option value = 1>Apple</option>
+            <option value = 2>Google</option>
+            <option value = 3>Samsung</option>
+            <option value = 4>Sony</option>
+        </select>
+        <label class = 'error-msg' for = 'manufacturer'></label>
+
+        <label for = 'price'>Price</label>
+        <input type = 'number' class = 'price' name = 'price'>
+        <label class = 'error-msg' for = 'price'></label>
+
+        <label for = 'discount'>Discount</label>
+        <input type = 'number' class = 'discount' name = 'discount'>
+        <label class = 'error-msg' for = 'discount'></label>
+
+        <label for = 'image'>Image</label>
+        <input type = 'file' class = 'fileButton' name = 'image'>
+        <label class = 'error-msg' for = 'image'></label>
+
+        <button>Submit</button>
+        <button class = 'delete'>Delete</button>
+
+    </form>
+</div>
