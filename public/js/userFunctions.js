@@ -25,7 +25,7 @@ window.addEventListener('load', () => {
                 profilePicture.src = '/img/profileImages/' + image
                 picture.style.backgroundImage = 'url("/img/profileImages/' + image + '")';
             } else {
-                profilePicture.src = "url('/img/profileImages/default.png')";
+                profilePicture.src = '/img/profileImages/default.png';
                 picture.style.backgroundImage = "url('/img/profileImages/default.png')";
             }
 

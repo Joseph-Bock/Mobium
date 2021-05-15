@@ -537,7 +537,7 @@ nav ul {
     transition: filter 0.1s linear;
 }
 
-.picture:hover {
+#profile-panel > .picture:hover {
     filter: brightness(80%)
 }
 
