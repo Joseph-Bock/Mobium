@@ -3,7 +3,21 @@ const Users = require('../../database/models').Users;
 const {validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 
+console.log(bcrypt.hashSync('12345678', 12))
+
 const controller = {
+    list: (req, res) => {
+        Users.findAndCountAll({raw : true,
+            attributes: {exclude: ['password', 'admin']},
+            order: [['createdAt', 'desc']]
+        }).then(users => {
+            return res.send({users: users.rows, count: users.count, status: 200})
+        }).catch(error => {
+            console.log(error);
+            return res.send.status(404);
+        })
+    },
+
     get: (req, res) => {
         let id = req.params.id;
 
@@ -12,8 +26,6 @@ const controller = {
             if (user) {
                 delete user.password;
                 delete user.admin;
-                delete user.createdAt;
-                delete user.updatedAt;
 
                 return res.status(200).json({user, status: 200});
             }
@@ -79,7 +91,7 @@ const controller = {
     update: (req, res) => {
         const errors = validationResult(req);
         const info = req.body;
-        const id = info.id;
+        const id = req.params.id;
 
         Users.findOne({
             where: {
@@ -131,7 +143,7 @@ const controller = {
                         id: id
                     }
                 }).then(data => {
-                    return res.status(200).json({id: info.id, status : 200})
+                    return res.status(200).json({id, status : 200})
                 }).catch(error => {
                     console.log(error);
                     return res.status(500).json({status : 500});
@@ -154,7 +166,22 @@ const controller = {
 
     delete: (req, res) => {
         const id = req.params.id
-
+        
+        Users.findByPk(id, {raw : true})
+        .then(user => {
+            if (user) {
+                if (user.image) {
+                    fs.unlink('../public/img/profileImages/' + user.image, (error) => {
+                        error ? console.log(error) : undefined;
+                        return;
+                    })
+                }
+            }
+        }).catch(error => {
+            console.log(error);
+            return res.status(500).json({status : 500});
+        })
+        
         Users.destroy({
             where: {
                 id: id

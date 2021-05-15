@@ -6,16 +6,23 @@
     <input id = 'checkbox' type = 'checkbox'>
 
     <ul>
-        <li class = 'nav-link'><a href = '/catalog'>Apple</a></li>
-        <li class = 'nav-link'><a href = '/catalog'>Google</a></li>
+        <li class = 'nav-link'><a href = '/catalog?search=Apple'>Apple</a></li>
+        <li class = 'nav-link'><a href = '/catalog?search=Google'>Google</a></li>
         <li><a href = '/' id = 'logo'>MOBIUM<span id = 'dot'>.</span></a></li>
-        <li class = 'nav-link'><a href = '/catalog'>Samsung</a></li>
-        <li class = 'nav-link'><a href = '/catalog'>Sony</a></li>
+        <li class = 'nav-link'><a href = '/catalog?search=Samsung'>Samsung</a></li>
+        <li class = 'nav-link'><a href = '/catalog?search=Sony'>Sony</a></li>
     </ul>
 
     <div id = 'cart-login'>
         <% if (locals.user) { %>
-            <a class = 'nav-link' href = '/profile'><img id = 'profile-picture' src = <%= '/img/profileImages/' + (locals.user.image ? locals.user.image : 'default.png') %>></a>
+            <a><img class = 'nav-link' id = 'profile-picture' src = <%= '/img/profileImages/' + (locals.user.image ? locals.user.image : 'default.png') %>>
+                <div class = 'dropdown' id = 'cart-dropdown'>
+                    <div class = 'triangle'></div>
+                    <ul class = 'content-list'>
+                        <button class = 'logout'>Logout</button>
+                    </ul>
+                </div>
+            </a>
         <% } else { %>
             <div class = 'nav-link' id = 'login'>Login</div> 
         <% } %>
@@ -36,17 +43,17 @@
 
     <% if (locals.user) { %>
         <p><%= 'Hi, ' + user.firstname %></p>
-        <button class = 'button' id = 'hamLogout'>Logout</button>
+        <button class = 'logout' id = 'hamLogout'>Logout</button>
     <% } else { %>
         <button class = 'button' id = 'hamLogin'>Login</button>
     <% } %>
 
     <ol id = 'content-list'>
         <ol>Catalog >
-            <li><a class = 'nav-link' href = '/catalog'>Apple</a></li>
-            <li><a class = 'nav-link' href = '/catalog'>Google</a></li>
-            <li><a class = 'nav-link' href = '/catalog'>Samsung</a></li>
-            <li><a class = 'nav-link' href = '/catalog'>Sony</a></li>
+            <li><a class = 'nav-link' href = '/catalog?search=Apple'>Apple</a></li>
+            <li><a class = 'nav-link' href = '/catalog?search=Google'>Google</a></li>
+            <li><a class = 'nav-link' href = '/catalog?search=Samsung'>Samsung</a></li>
+            <li><a class = 'nav-link' href = '/catalog?search=Sony'>Sony</a></li>
         </ol>
 
         <ol>Admin Panel ></ol>
@@ -59,6 +66,7 @@
 </div>
 
 <% if (locals.user) { %>
+    <%- include('../partials/profile.ejs') %> <!-- Includes Profile Panel -->
     <% if (locals.user.admin) { %>
         <%- include('../partials/admin-panel.ejs') %> <!-- Includes Admin Panel -->
     <% } %>

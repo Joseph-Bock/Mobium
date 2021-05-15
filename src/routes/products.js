@@ -30,7 +30,7 @@ const uploadFile = multer({ storage : multerDiskStorage });
 router.get('/', controller.list);
 router.get('/:id', controller.get);
 router.post('/', adminRoutes, uploadFile.single('image'), dataValidator.Product, controller.create);
-router.put('/', adminRoutes, uploadFile.single('image'), dataValidator.Product, controller.update);
+router.put('/:id', adminRoutes, uploadFile.single('image'), dataValidator.Product, controller.update);
 router.delete('/:id', adminRoutes, controller.delete);
 
 module.exports = router;

@@ -7,7 +7,14 @@ module.exports = {
     Registration: [
 
         body('firstname').notEmpty().withMessage('Field cannot be empty!')
-                         .isLength(2).withMessage('Name is too short'),
+                         .isLength(2).withMessage('Name is too short')
+                         .custom((name, {req}) => {
+                             if (!isNaN(parseInt(name))) {
+                                 throw new Error('Please use alphabetical characters');
+                             }
+
+                             return true;
+                         }),
 
         body('lastname').notEmpty().withMessage('Field cannot be empty!')
                         .isLength(2).withMessage('Last name is too short'),
@@ -63,7 +70,7 @@ module.exports = {
         }),
 
         body('confirmation').custom((value, {req}) => {
-            if (req.method == 'POST') {
+            if (req.method == 'POST' || req.body.password != '') {
                 if (value <= 1) {
                     throw new Error('Repeat password for confirmation!')
                 } else if (value != req.body.password) {

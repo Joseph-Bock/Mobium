@@ -16,7 +16,7 @@
             <form id = 'register-form' action = '/register' method = 'POST' enctype = 'multipart/form-data'>
 
                 <label for = 'firstname'>First Name</label>
-                <input type = 'text' class = 'firstname' name = 'firstname'>
+                <input type = 'text' class = 'firstname' name = 'firstname' <% if (typeof data != 'undefined') { %> <%= 'value =' + data.firstname %><% } %>>
                 <label class = 'error-msg' for = 'firstname'>
                     <% if (typeof errors != 'undefined') { %>
                         <% if (errors.firstname) { %>
@@ -26,7 +26,7 @@
                 </label>
 
                 <label for = 'lastname'>Last Name</label>
-                <input type = 'text' class = 'lastname' name = 'lastname'>
+                <input type = 'text' class = 'lastname' name = 'lastname' <% if (typeof data != 'undefined') { %> <%= 'value =' + data.lastname %><% } %>>
                 <label class = 'error-msg' for = 'lastname'>
                     <% if (typeof errors != 'undefined') { %>
                         <% if (errors.lastname) { %>
@@ -37,9 +37,9 @@
 
                 <label for = 'birthdate'>Date of Birth</label>
                 <div class = 'birthdate'>
-                    <input type = 'number' class = 'day' name = 'day' min = 1 max = 31 placeholder = 'day'>
-                    <input type = 'number' class = 'month' name = 'month' min = 1 max = 12 placeholder = 'month'>
-                    <input type = 'number' class = 'year' name = 'year' min = 1900 max = 2008 placeholder = 'year'>
+                    <input type = 'number' class = 'day' name = 'day' min = 1 max = 31 placeholder = 'day' <% if (typeof data != 'undefined') { %> <%= 'value =' + data.day %><% } %>>
+                    <input type = 'number' class = 'month' name = 'month' min = 1 max = 12 placeholder = 'month' <% if (typeof data != 'undefined') { %> <%= 'value =' + data.month %><% } %>>
+                    <input type = 'number' class = 'year' name = 'year' min = 1900 max = 2008 placeholder = 'year' <% if (typeof data != 'undefined') { %> <%= 'value =' + data.year %><% } %>>
                 </div>
                 <label class = 'error-msg' for = 'birthdate'>
                     <% if (typeof errors != 'undefined') { %>
@@ -51,10 +51,10 @@
 
                 <div class = 'gender'>
                     <label for = 'female'>Female</label>
-                    <input type = 'radio' name = 'gender' class = 'female' value = 'female'>
+                    <input type = 'radio' name = 'gender' class = 'female' value = 'female' <% if (typeof data != 'undefined' && data.gender == 'female') { %> <%= 'checked =' + true %><% } %>>
 
                     <label for = 'male'>Male</label>
-                    <input type = 'radio' name = 'gender' class = 'male' value = 'male'>
+                    <input type = 'radio' name = 'gender' class = 'male' value = 'male' <% if (typeof data != 'undefined' && data.gender == 'male') { %> <%= 'checked =' + true %><% } %>>
                 </div>
                 <label class = 'error-msg' for = 'gender'>
                     <% if (typeof errors != 'undefined') { %>
@@ -75,7 +75,7 @@
                 </label>
 
                 <label for = 'email'>Email</label>
-                <input type = 'email' class = 'email' name = 'email'>
+                <input type = 'email' class = 'email' name = 'email' <% if (typeof data != 'undefined') { %> <%= 'value =' + data.email %><% } %>>
                 <label class = 'error-msg' for = 'email'>
                     <% if (typeof errors != 'undefined') { %>
                         <% if (errors.email) { %>

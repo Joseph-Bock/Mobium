@@ -1,10 +1,51 @@
-<div id = 'profile'>
-    <div id = 'profilePicture'></div>
-    <div>
-        <p>Joseph</p>
-        <p>Herberth</p>
-        <p>23-03-2000</p>
-        <p>Male</p>
-        <p>Joseph_bock@hotmail.com</p>
-    </div>
+<script src = '/js/userFunctions.js'></script>
+
+<div id = 'profile-panel'>
+    <div class = 'picture' style = <%= "background-image:" + 'url("/img/profileImages/' + (locals.user.image ? locals.user.image : 'default.png') + '")'%>></div>
+
+    <form id = 'profile'>
+        <label class = 'id' style = 'display: none'><%= locals.user.id %></label>
+
+        <label for = 'firstname'>First Name</label>
+        <input type = 'text' class = 'firstname' name = 'firstname'>
+        <label class = 'error-msg' for = 'firstname'></label>
+
+        <label for = 'lastname'>Last Name</label>
+        <input type = 'text' class = 'lastname' name = 'lastname'>
+        <label class = 'error-msg' for = 'lastname'></label>
+
+        <label for = 'birthdate'>Date of Birth</label>
+        <div class = 'birthdate'>
+            <input type = 'number' class = 'day' name = 'day' min = 1 max = 31 placeholder = 'day'>
+            <input type = 'number' class = 'month' name = 'month' min = 1 max = 12 placeholder = 'month'>
+            <input type = 'number' class = 'year' name = 'year' min = 1900 max = 2008 placeholder = 'year'>
+        </div>
+        <label class = 'error-msg' for = 'birthdate'></label>
+
+        <div class = 'gender'>
+            <label for = 'female'>Female</label>
+            <input type = 'radio' name = 'gender' class = 'female' value = 'female'>
+
+            <label for = 'male'>Male</label>
+            <input type = 'radio' name = 'gender' class = 'male' value = 'male'>
+        </div>
+        <label class = 'error-msg' for = 'gender'></label>
+
+        <input type = 'file' class = 'fileButton' name = 'image'>
+
+        <label for = 'email'>Email</label>
+        <input type = 'email' class = 'email' name = 'email'>
+        <label class = 'error-msg' for = 'email'></label>
+
+        <label for = 'password'>Password</label>
+        <input type = 'password' class = 'password' name = 'password'>
+        <label class = 'error-msg' for = 'password'></label>
+
+        <label for = 'confirmation'>Repeat Password</label>
+        <input type = 'password' class = 'confirmation' name = 'confirmation'>
+        <label class = 'error-msg' for = 'confirmation'></label>
+
+        <button>Submit</button>
+        <button class = 'delete'>Delete Account</button>
+    </form>
 </div>

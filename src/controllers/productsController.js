@@ -1,5 +1,7 @@
 const fs = require('fs');
 const Products = require('../../database/models').Products;
+const Manufacturers = require('../../database/models').Manufacturers;
+const Operators = require('sequelize').Op;
 const {validationResult} = require('express-validator');
 
 
@@ -61,13 +63,73 @@ const properties = {
 
 const controller = {
     list: (req, res) => {
-        Products.findAll({
-            include: [{association: 'manufacturers'}]
-        }).then(products => {
-            return res.status(200).json({products, status : 200});
-        }).catch(error => {
-            console.log(error);
-        })
+        if (search = req.query.search) {
+            console.log(search);
+
+            Manufacturers.findOne({raw : true,
+                where: {
+                    name: search
+                }
+            }).then(manufacturer => {
+                if (manufacturer) {
+                    Products.findAll({raw : true, 
+                        where: {
+                            manufacturer: manufacturer.id
+                        }
+                    }).then(products => {
+                        return res.status(200).json({products, status : 200});
+                    }).catch(error => {
+                        console.log(error);
+                    })
+                } else { 
+                    Products.findAll({raw : true,
+                        where: {
+                            name: {
+                                [Operators.like]: '%' + search + '%'
+                            }
+                        }
+                    }).then(products => {
+                        return res.status(200).json({products, status : 200});
+                    }).catch(error => {
+                        console.log(error);
+                    })
+                }
+            }).catch(error => {
+                console.log(error);
+            })
+        } else {
+            Products.findAndCountAll({raw : true, 
+                include: [{association: 'manufacturers'}]
+            }).then(data => {
+                const count = data.count;
+                const products = data.rows;
+
+                Products.findAndCountAll({raw : true, 
+                    group: 'manufacturer',
+                    include: [{association: 'manufacturers'}]
+                }).then(data => {
+                    const counts = data.count;
+                    const manufacturer = data.rows;
+                    let manufacturers = {};
+
+                    for (const [index, value] of counts.entries()){
+                        const i = manufacturer[index]['manufacturers.name'];
+                        const v = counts[index].count;
+
+                        manufacturers[i] = v;
+                    }
+
+                    return res.status(200).json({count, manufacturers, products});
+
+                }).catch(error => {
+                    console.log(error);
+                    return res.status(500)
+                })
+            }).catch(error => {
+                console.log(error);
+                return res.status(500)
+            })
+        }
     },
 
     get: (req, res) => {
@@ -124,7 +186,7 @@ const controller = {
                     video: properties.video()
     
                 }).then(newProduct => {
-                    return res.status(201).json({id : newProduct.id, status : 201})
+                    return res.status(201).json({product : newProduct.id, status : 201})
                 }).catch(error => {
                     console.log(error);
                     return res.status(500).json({status : 500});
@@ -145,7 +207,7 @@ const controller = {
 
     update: (req, res) => {
         const info = req.body;
-        const id = info.id;
+        const id = req.params.id;
         const errors = validationResult(req);
 
         Products.findOne({
@@ -153,15 +215,17 @@ const controller = {
                 name: info.name
             }
         }).then(product => {
-            if (product.id != id) {
-                let error = {
-                    value: '',
-                    msg: 'Product already exists!',
-                    param: 'name',
-                    location: 'body'
+            if (product) {
+                if (product.id != id) {
+                    let error = {
+                        value: '',
+                        msg: 'Product already exists!',
+                        param: 'name',
+                        location: 'body'
+                    }
+                    
+                    errors.errors.push(error);
                 }
-                
-                errors.errors.push(error);
             }
 
             if (errors.isEmpty()) {
@@ -203,7 +267,7 @@ const controller = {
                         id: id
                     }
                 }).then(data => {
-                    return res.status(201).json({id : info.id, status : 201})
+                    return res.status(201).json({product : id, status : 201})
                 }).catch(error => {
                     console.log(error);
                     return res.status(500).json({status : 500});
@@ -226,6 +290,21 @@ const controller = {
 
     delete: (req, res) => {
         const id = req.params.id
+
+        Products.findByPk(id, {raw : true})
+        .then(product => {
+            if (product) {
+                if (product.image) {
+                    fs.unlink('../public/img/productImages/' + product.image, (error) => {
+                        error ? console.log(error) : undefined;
+                        return;
+                    })
+                }
+            }
+        }).catch(error => {
+            console.log(error);
+            return res.status(500).json({status : 500});
+        })
 
         Products.destroy({
             where: {

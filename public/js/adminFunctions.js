@@ -2,43 +2,6 @@ window.addEventListener('load', function () {
 
     console.log('Admin Panel Loaded');
 
-    //Bring down Admin Panel //
-
-    const adminPanel = document.querySelector('#admin-panel');
-    const blur = document.querySelector('#back-blur');
-
-    function openAdmin () {
-        let offset = document.querySelector('nav').offsetHeight;
-        let position = ((window.innerHeight + offset) / 2);
-
-        if (adminPanel.offsetTop == -1000) {
-
-            adminPanel.style.top = 'calc(50% + ' + (offset / 2) + 'px)';
-            blur.style.opacity = 1;
-            blur.style.top = 'unset';
-
-        } else if (adminPanel.offsetTop - position <= 0.5) {
-
-            adminPanel.style.top = '-1000px';
-            blur.style.opacity = 0;
-
-            setTimeout(() => {
-                blur.style.top = '-100%';
-            }, 400);
-        }
-    }
-
-    window.addEventListener('keydown', (event) => {
-        let key = event.key;
-
-        if (key == '=') {
-            openAdmin();
-        }
-    });
-
-    blur.addEventListener('click', openAdmin);
-
-
     // Switch Forms //
 
     const userButton = document.querySelector('#user-button');
@@ -98,7 +61,6 @@ window.addEventListener('load', function () {
 
                     updateForm(form, JSON.parse(data)[index]);
                     displayErrors(form, undefined);
-                    return;
                 } else {
                     updateForm(form, undefined);
                     displayErrors(form, undefined);
@@ -111,13 +73,14 @@ window.addEventListener('load', function () {
     }
 
     function changeMethod (form, bool, id, setDelete) {
-        bool ? form.action = getRoute(form) + '?_method=PUT' : form.action = getRoute(form);
+        bool ? form.action = getRoute(form) + '/' + id + '?_method=PUT' : form.action = getRoute(form);
         setDelete ? form.action = getRoute(form) + '/' + id + '?_method=DELETE' : undefined;
     }
 
     function updateForm (form, data) {
         const inputs = form.querySelectorAll('input');
         const select = form.querySelector('select');
+        const id = form.querySelector('.id').value;
 
         if (data) {
             if (birthdate = data['birthdate']) {
@@ -138,7 +101,7 @@ window.addEventListener('load', function () {
             }
             
             form.querySelector('.delete').style.display = 'inline-block';
-            changeMethod(form, true);
+            changeMethod(form, true, id);
         } else {
             for (input of inputs) {
                 input.type == 'radio' ? input.checked = false : input.value = '';
@@ -202,6 +165,7 @@ window.addEventListener('load', function () {
                 updateForm(form, undefined);
             }
             data.id ? console.log(data['id']) : undefined;
+            data.product ? window.location.replace("catalog?search=" + data.product) : undefined;
         })
     }
 

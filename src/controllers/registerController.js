@@ -48,7 +48,7 @@ const controller = {
                 }
 
                 errors = errors.mapped({onlyFirstError: true});
-                res.render('register', {errors: errors});
+                res.render('register', {errors: errors, data: info});
             }
         }).catch(error => {
             console.log(error);
@@ -66,7 +66,7 @@ const controller = {
             lastname: info.lastname,
             birthdate: new Date(info.year + '/' + info.month + '/' + info.day),
             gender: info.gender,
-            image: info.image,
+            image: info.image ? info.image : 'default.png',
             email: info.email,
             password: bcrypt.hashSync(info.password, 12),
             admin: 0

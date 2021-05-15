@@ -27,9 +27,10 @@ const uploadFile = multer({ storage : multerDiskStorage });
 
 //Setting Routes
 
-router.get('/:id', adminRoutes, controller.get);
+router.get('/', controller.list);
+router.get('/:id', controller.get);
 router.post('/', adminRoutes, uploadFile.single('image'), dataValidator.Registration, controller.create);
-router.put('/', adminRoutes, uploadFile.single('image'), dataValidator.Registration, controller.update);
+router.put('/:id', adminRoutes, uploadFile.single('image'), dataValidator.Registration, controller.update);
 router.delete('/:id', adminRoutes, controller.delete);
 
 module.exports = router;

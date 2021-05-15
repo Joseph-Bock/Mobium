@@ -1,6 +1,7 @@
 // Modules
 
 const path = require('path');
+const cors = require('cors');
 const session = require('express-session');
 const methodOverride = require('method-override')
 
@@ -31,6 +32,7 @@ app.use(session({secret: 'Mobium',
                  resave: false,
                  saveUninitialized: false}));
 
+app.use(cors());
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({extended: false}));

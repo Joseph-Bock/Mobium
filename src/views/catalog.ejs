@@ -6,8 +6,30 @@
 
     <body id = 'catalog'>
 
+        <script src = '/js/catalogFunctions.js'></script>
+
         <%- include('./partials/nav.ejs') %> <!-- Includes navigation -->
         <%- include('./partials/search-bar.ejs') %> <!-- Includes search bar -->
+
+        <div id = 'product-panel' style = <% if (typeof product != 'undefined') { %> 'top:calc(50% + 50px)' <% } else { %> 'top: -100%' <% } %>>
+            <div class = 'picture' style = <%= "background-image:" + 'url("/img/productImages/' + (typeof product != 'undefined' ? product.image : 'default.png') + '")'%>></div>
+            <h1 class = 'name'><%= typeof product != 'undefined' ? product.name : '' %></h1>
+            <h3 class = 'price'><%= typeof product != 'undefined' ? product.price + '$': '' %></h3>
+            <div>
+                <p class = 'storage'>Storage <span><%= typeof product != 'undefined' ? product.storage + ' GB': '' %></span></p>
+                <p class = 'ram'>RAM <span><%= typeof product != 'undefined' ? product.ram + ' GB': '' %></span></p>
+                <p class = 'processor'>Processor <span><%= typeof product != 'undefined' ? product.processor : '' %></span></p>
+                <p class = 'color'>Color <span><%= typeof product != 'undefined' ? product.color : '' %></span></p>
+                <p class = 'weight'>Weight <span><%= typeof product != 'undefined' ? product.weight + ' Grams': '' %></span></p>
+                <p class = 'display'>Display <span><%= typeof product != 'undefined' ? product.display + ' Inch' : '' %></span></p>
+                <p class = 'resolution'>Resolution <span><%= typeof product != 'undefined' ? product.resolution : '' %></span></p>
+                <p class = 'frontCamera'>Front Camera <span><%= typeof product != 'undefined' ? product.frontCamera + ' MP' : '' %></span></p>
+                <p class = 'backCamera'>Back Camera <span><%= typeof product != 'undefined' ? product.backCamera + ' MP' : '' %></span></p>
+                <p class = 'video'>Recording <span><%= typeof product != 'undefined' ? product.video : '' %></span></p>
+            </div>
+
+            <button class = 'button'>Add to Cart</button>
+        </div>
 
         <div id = 'container'>
             <ol id = 'content'>
@@ -112,19 +134,7 @@
             <button>256 GB</button>
         </div>
 
-        <div id = 'products'>
-            <% for( let i = 1; i <= 14; i++ ) { %>
-                <div class = 'product' id = 'item<%=i%>'>
-                    <p>iPhone 12 Pro</p>
-                    <img src = 'img/iPhone12.png'>
-
-                    <div class = 'cart-shortcut'>
-                        <p>999$ USD</p>
-                        <button class = 'button'></button>
-                    </div>
-                </div>
-            <% } %>
-        </div>
+        <div id = 'products'></div>
 
         <%- include('./partials/footer.ejs') %> <!-- Includes footer -->
 
