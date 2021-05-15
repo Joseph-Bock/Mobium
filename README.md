@@ -25,5 +25,7 @@ Mobium apunta a la venta de celulares para todo tipo de personas, siempre cumpli
 
 ### Admin Account
 
-email: Joseph_bock@hotmail.com
-pass: 12345678
+Press '=' key to bring down Admin Panel
+
+-**email:** Joseph_bock@hotmail.com
+-**pass:** 12345678
