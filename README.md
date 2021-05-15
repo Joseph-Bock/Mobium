@@ -22,3 +22,10 @@ Mobium apunta a la venta de celulares para todo tipo de personas, siempre cumpli
 - [Apple](https://www.apple.com/)
 - [Samsung](https://www.samsung.com/)
 - [Xiaomi](https://www.mi.com/)
+
+### Admin Account
+
+Press '=' key to bring down Admin Panel
+
+-**email:** Joseph_bock@hotmail.com
+-**pass:** 12345678
