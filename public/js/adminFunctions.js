@@ -78,11 +78,21 @@ window.addEventListener('load', function () {
     }
 
     function updateForm (form, data) {
+        const admin = form.querySelector('.admin-check');
+        const adminLabel = form.querySelector('.admin-label');
         const inputs = form.querySelectorAll('input');
         const select = form.querySelector('select');
         const id = form.querySelector('.id').value;
 
         if (data) {
+
+            if (admin) {
+                admin.style.display = 'inline-block';
+                adminLabel.style.display = 'inline-block';
+
+                data['admin'] == 1 ? admin.checked = true : admin.checked = false;
+            }
+
             if (birthdate = data['birthdate']) {
                 [year, month, day] = birthdate.split('-');
                 
@@ -103,8 +113,14 @@ window.addEventListener('load', function () {
             form.querySelector('.delete').style.display = 'inline-block';
             changeMethod(form, true, id);
         } else {
+
+            if (admin) {
+                admin.style.display = 'none';
+                adminLabel.style.display = 'none';
+            }
+
             for (input of inputs) {
-                input.type == 'radio' ? input.checked = false : input.value = '';
+                input.type == 'radio' || input.type == 'checkbox' ? input.checked = false : input.value = '';                
             }
 
             if (select) {
@@ -116,8 +132,8 @@ window.addEventListener('load', function () {
         }
     }
 
-    userPanel.querySelector('.id').addEventListener('blur', fetchData);
-    productPanel.querySelector('.id').addEventListener('blur', fetchData);
+    userPanel.querySelector('.id').addEventListener('change', fetchData);
+    productPanel.querySelector('.id').addEventListener('change', fetchData);
 
     function displayErrors(form, errors) {
         let labels = form.getElementsByClassName('error-msg');

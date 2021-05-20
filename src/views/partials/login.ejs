@@ -12,6 +12,8 @@
     
             <% if (locals.loginError != undefined) { %>
                 <p id = 'login-error'><%= locals.loginError %></p>
+            <% } else { %>
+                <p id = 'login-error' style = 'display: none'></p>
             <% } %>
         </div>
     

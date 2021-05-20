@@ -7,17 +7,17 @@ module.exports = {
     Registration: [
 
         body('firstname').notEmpty().withMessage('Field cannot be empty!')
-                         .isLength(2).withMessage('Name is too short')
+                         .isLength(2).withMessage('Name is too short!')
                          .custom((name, {req}) => {
                              if (!isNaN(parseInt(name))) {
-                                 throw new Error('Please use alphabetical characters');
+                                 throw new Error('Please use alphabetical characters!');
                              }
 
                              return true;
                          }),
 
         body('lastname').notEmpty().withMessage('Field cannot be empty!')
-                        .isLength(2).withMessage('Last name is too short'),
+                        .isLength(2).withMessage('Last name is too short!'),
 
         body('day').notEmpty().withMessage('Enter a valid birthday!')
                    .custom((day, {req}) => {

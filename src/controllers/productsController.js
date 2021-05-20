@@ -63,9 +63,27 @@ const properties = {
 
 const controller = {
     list: (req, res) => {
-        if (search = req.query.search) {
-            console.log(search);
+        let order = req.query.order;
+        let pageCount = req.query.count;
+        let limit = req.query.limit;
 
+        if (!order) {
+            order = 'DESC';
+        }
+
+        if (!pageCount) {
+            pageCount = 0;
+        } else {
+            pageCount = (parseInt(pageCount) * 10);
+        }
+
+        if (!limit) {
+            limit: null;
+        } else {
+            limit = parseInt(limit);
+        }
+
+        if (search = req.query.search) {
             Manufacturers.findOne({raw : true,
                 where: {
                     name: search
@@ -99,14 +117,17 @@ const controller = {
             })
         } else {
             Products.findAndCountAll({raw : true, 
-                include: [{association: 'manufacturers'}]
+                include: [{association: 'manufacturers'}],
+                order: [['createdAt', order]],
+                limit: limit,
+                offset: pageCount
             }).then(data => {
                 const count = data.count;
                 const products = data.rows;
 
                 Products.findAndCountAll({raw : true, 
                     group: 'manufacturer',
-                    include: [{association: 'manufacturers'}]
+                    include: [{association: 'manufacturers'}],
                 }).then(data => {
                     const counts = data.count;
                     const manufacturer = data.rows;

@@ -31,6 +31,11 @@ window.addEventListener('load', () => {
         const profP = document.querySelector('#profile-panel');
         const adminP = document.querySelector('#admin-panel');
         const productP = document.querySelector('#product-panel');
+        const deletePrompt = document.querySelector('#logout-prompt');
+
+        if (deletePrompt) {
+            deletePrompt.style.top = '-50%';
+        }
         
         if (logP && loginOpened) {
             openLogin();
@@ -78,6 +83,15 @@ window.addEventListener('load', () => {
     let loginOpened = false;
 
     if (loginPanel) {
+        let offset = document.querySelector('nav').offsetHeight / 2;
+        let position = loginPanel.offsetTop;
+        let center = (window.innerHeight / 2) + offset;
+
+        if (center - position <= 0.5) {
+            loginOpened = true;
+            blurBackground(true);
+        }
+
         function openLogin () {
             if (!loginTransitioning) {
                 let offset = document.querySelector('nav').offsetHeight;
@@ -172,9 +186,9 @@ window.addEventListener('load', () => {
     let productOpened = false;
 
     if (productPanel) {
-        const offset = document.querySelector('nav').offsetHeight / 2;
-        const position = productPanel.offsetTop;
-        const center = (window.innerHeight / 2) + offset;
+        let offset = document.querySelector('nav').offsetHeight / 2;
+        let position = productPanel.offsetTop;
+        let center = (window.innerHeight / 2) + offset;
 
         if (center - position <= 0.5) {
             productOpened = true;
@@ -275,4 +289,28 @@ window.addEventListener('load', () => {
             }
         });
     }
+
+    const editButtons = document.getElementsByClassName('edit-product');
+    
+    function editProduct (event) {
+        event.stopPropagation();
+
+        const productForm = document.querySelector('#product-admin').querySelector('.id');
+        const productButton = document.querySelector('#product-button')
+        const id = event.target.parentElement.querySelector('.id').innerText;
+
+        const trigger = new Event('change', { 'bubbles': true, 'cancelable': true });
+        const changeForm = new Event('click', { 'bubbles': true, 'cancelable': true });
+
+        productForm.value = id;
+        productForm.dispatchEvent(trigger);
+        productButton.dispatchEvent(changeForm);
+        openAdmin();
+    }
+
+    setTimeout(function(){
+        for (let button of editButtons) {
+            button.addEventListener('click', editProduct);
+        }
+    }, 100);
 })

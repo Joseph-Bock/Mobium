@@ -29,3 +29,9 @@ Press '=' key to bring down Admin Panel
 
 -**email:** Joseph_bock@hotmail.com
 -**pass:** 12345678
+
+
+## Known Bugs
+
+Sometimes panels can't be closed due to unknown glitch inside the open/close function
+When trying to display all items while search bar query isnt empty wont allow edit shortcut to work

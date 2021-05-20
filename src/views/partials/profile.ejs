@@ -1,5 +1,15 @@
 <script src = '/js/userFunctions.js'></script>
 
+<div id = 'logout-prompt'>
+    <p>Are you sure you want to delete your account?</p>
+    <p>There is no way to undo this action</p>
+
+    <div>
+        <button id = 'cancel-delete'>Return</button>
+        <button id = 'delete-user'>Delete Account</button>
+    </div>
+</div>
+
 <div id = 'profile-panel'>
     <div class = 'picture' style = <%= "background-image:" + 'url("/img/profileImages/' + (locals.user.image ? locals.user.image : 'default.png') + '")'%>></div>
 

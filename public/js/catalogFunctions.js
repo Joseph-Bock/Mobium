@@ -1,4 +1,10 @@
 window.addEventListener('load', () => {
+    const profile = document.querySelector('#profile-panel');
+
+    if (profile) {
+        var userId = profile.querySelector('.id').innerHTML;
+    }
+
     const container = document.querySelector('#products');
     const urlParams = new URLSearchParams(window.location.search);
     const myParam = urlParams.get('search');
@@ -91,39 +97,74 @@ window.addEventListener('load', () => {
     }
     
     function displayProducts (products) {
-        products.forEach(product => {
-            const divContainer = document.createElement('div');
-            divContainer.classList.add('product');
+        
+        if (userId) {
+            if (userId == 1) {
+                fetch('users/' + userId)
+                .then(response => {
+                    return response.text()
+                }).then(data => {
+                    render(JSON.parse(data).user.admin)
+                })
+            }
+        } else {
+            render();
+        }
 
-            const id = document.createElement('p');
-            id.classList.add('id');
-            id.innerHTML = product.id;
-            id.style.display = 'none';
-            divContainer.appendChild(id);
+        function render (admin) {
+            products.forEach(product => {
+                const divContainer = document.createElement('div');
+                divContainer.classList.add('product');
+    
+                const id = document.createElement('p');
+                id.classList.add('id');
+                id.innerHTML = product.id;
+                id.style.display = 'none';
+                divContainer.appendChild(id);
 
-            const name = document.createElement('p');
-            name.innerHTML = product.name;
-            divContainer.appendChild(name);
+                if (admin == 1) {
+                    const adminButton = document.createElement('div');
+                    adminButton.classList.add('edit-product');
+                    divContainer.appendChild(adminButton);
+                }
+                
+                if (product.discount > 0) {
+                    const discount = document.createElement('p')
+                    discount.classList.add('discount-tag');
+                    discount.innerHTML = '-' + product.discount + '%';
+                    divContainer.appendChild(discount);
+                }
 
-            const image = document.createElement('img');
-            image.src = 'img/productImages/' + product.image;
-            divContainer.appendChild(image);
+                const name = document.createElement('p');
+                name.innerHTML = product.name;
+                divContainer.appendChild(name);
+    
+                const image = document.createElement('img');
+                image.src = 'img/productImages/' + product.image;
+                divContainer.appendChild(image);
+    
+                const addCart = document.createElement('div');
+                addCart.classList.add('cart-shortcut');
+                divContainer.appendChild(addCart);
+    
+                const price = document.createElement('p');
 
-            const addCart = document.createElement('div');
-            addCart.classList.add('cart-shortcut');
-            divContainer.appendChild(addCart);
+                if (product.discount > 0) {
+                    price.innerHTML = (product.price * (product.discount / 100)) + '$';
+                } else {
+                    price.innerHTML = product.price + '$';
+                }
 
-            const price = document.createElement('p');
-            price.innerHTML = product.price + '$';
-            addCart.appendChild(price);
-
-            const add = document.createElement('button');
-            add.classList.add('button');
-            addCart.appendChild(add);
-
-            container.appendChild(divContainer);
-
-            divContainer.addEventListener('click', productDetails);
-        })
+                addCart.appendChild(price);
+    
+                const add = document.createElement('button');
+                add.classList.add('button');
+                addCart.appendChild(add);
+    
+                container.appendChild(divContainer);
+    
+                divContainer.addEventListener('click', productDetails);
+            })
+        }
     }
 })

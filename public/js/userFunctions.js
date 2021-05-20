@@ -100,20 +100,35 @@ window.addEventListener('load', () => {
 
     submitButton.addEventListener('click', updateUser);
 
-    function deleteUser (event) {
-        event.preventDefault()
 
+    const prompt = document.querySelector('#logout-prompt');
+    const cancel = prompt.querySelector('#cancel-delete');
+    const confirm = prompt.querySelector('#delete-user');
+
+    function closePrompt (event) {
+        event.preventDefault;
+        prompt.style.top = '-50%';
+    }
+
+    function openPrompt (event) {
+        event.preventDefault();
+        prompt.style.top = '50%';
+    }
+
+    function deleteUser (event) {
+        event.preventDefault();
+        
         fetch('users/' + id, {
             method: 'DELETE'
-        })
-        .then(response => {
+        }).then(response => {
             window.location.replace('/logout');
             return response.json();
         })
     }
 
-    deleteButton.addEventListener('click', deleteUser);
-
+    deleteButton.addEventListener('click', openPrompt);
+    cancel.addEventListener('click', closePrompt);
+    confirm.addEventListener('click', deleteUser);
 
     //Logout
 

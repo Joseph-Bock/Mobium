@@ -60,7 +60,7 @@ app.use('/catalog', catalog);
 app.use('/cart', cart);
 
 app.use('/', (req, res) => {
-    return res.redirect('/');
+    return res.render('error');
 });
 
 

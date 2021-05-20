@@ -3,8 +3,6 @@ const Users = require('../../database/models').Users;
 const {validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 
-console.log(bcrypt.hashSync('12345678', 12))
-
 const controller = {
     list: (req, res) => {
         Users.findAndCountAll({raw : true,
@@ -25,7 +23,6 @@ const controller = {
         .then(user => {
             if (user) {
                 delete user.password;
-                delete user.admin;
 
                 return res.status(200).json({user, status: 200});
             }
@@ -89,9 +86,28 @@ const controller = {
     },
 
     update: (req, res) => {
+        const currentUser = req.session.user;
+
         const errors = validationResult(req);
         const info = req.body;
         const id = req.params.id;
+
+        let admin = info.admin;
+        admin == 'on' ? admin = 1 : admin = 0;
+
+        if (admin === 1) {
+            if (currentUser.id == 1) {
+                admin = 1;
+            } else {
+                admin = 0;
+            }
+        }
+
+        if (id == 1) {
+            admin = 1;
+        } else if (currentUser.id == id && currentUser.admin == 1) {
+            admin = 1;
+        }
 
         Users.findOne({
             where: {
@@ -137,7 +153,7 @@ const controller = {
                     image: info.image,
                     email: info.email,
                     password: info.password ? bcrypt.hashSync(info.password, 12) : undefined,
-        
+                    admin: admin
                 }, {
                     where: {
                         id: id
